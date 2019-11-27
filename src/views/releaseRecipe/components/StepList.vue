@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="i in length">
-      <Step :index="i"/>
+      <Step :index="i" ref="step" />
     </div>
   </div>
 </template>
@@ -16,6 +16,19 @@ export default {
     return {
       length: 5
     };
+  },
+  methods: {
+    getAll() {
+      let steps = [];
+      this.$refs.step.forEach(i => {
+        let step = {};
+        step = i.getOne();
+        if (step) {
+          steps.push(step);
+        }
+      });
+      return steps;
+    }
   }
 };
 </script>

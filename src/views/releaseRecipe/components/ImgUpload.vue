@@ -1,8 +1,12 @@
 <template>
   <div>
     <el-upload
-      action="http://localhost:5000/upload"
+      action
+      :auto-upload="false"
+      :limit=1
+      accept=".jpg,.jpeg,.png"
       list-type="picture-card"
+      :on-change="handleAdd" 
       :on-preview="handlePictureCardPreview"
       :on-remove="handleRemove"
       aria-setsize="20"
@@ -19,13 +23,19 @@
 export default {
   data() {
     return {
+      file:[],
       dialogImageUrl: "",
       dialogVisible: false
     };
   },
   methods: {
+    getAll(){
+      return this.file[0];
+    },
+    handleAdd(file, fileList) {
+      this.file.push(file.raw);
+    },
     handleRemove(file, fileList) {
-      console.log(file, fileList);
     },
     handlePictureCardPreview(file) {
       this.dialogImageUrl = file.url;

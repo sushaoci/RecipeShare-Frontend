@@ -7,18 +7,18 @@
     <div class="img">
       <h1>上传封面</h1>
       <el-card class="box-card">
-        <ImgUpload />
+        <ImgUpload ref="cover" />
       </el-card>
     </div>
     <div class="material">
       <h1>用料</h1>
       <el-card class="box-card">
-        <Material ref="material"/>
+        <Material ref="material" />
       </el-card>
     </div>
     <div class="step">
       <h1>做法</h1>
-      <StepList />
+      <StepList ref="steps" />
     </div>
     <el-button type="primary" @click.prevent="submit">确定上传</el-button>
   </div>
@@ -28,6 +28,8 @@
 import Material from "./components/Material";
 import ImgUpload from "./components/ImgUpload";
 import StepList from "./components/StepList";
+
+import global from "@/global/global";
 
 export default {
   components: {
@@ -40,11 +42,20 @@ export default {
       name: ""
     };
   },
-  methods:{
-    submit(){
-        console.log(this.$refs.material.getAll());
+  methods: {
+    submit() {
+      let recipe = {};
+      recipe.name = this.name;
+      recipe.cover = this.$refs.cover.getAll();
+      recipe.material = this.$refs.material.getAll();
+      recipe.steps = this.$refs.steps.getAll();
+
+      let formData = new FormData();
+      formData.append("recipe", recipe);
+      axios.post(global.url + "/recipe/release",formData).then();
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 
