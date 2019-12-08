@@ -1,13 +1,9 @@
 <template>
-  <div>
+  <el-card>
     <div v-for="i in rankList">
-      <el-row>
-        <el-col :span="5">
-          <rank :id="i.id" :title="i.title" :likes="i.likes" />
-        </el-col>
-      </el-row>
+      <rank :id="i.id" :title="i.title" :likes="i.likes" />
     </div>
-  </div>
+  </el-card>
 </template>
 
 <script>

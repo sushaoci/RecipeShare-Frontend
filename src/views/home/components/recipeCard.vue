@@ -1,26 +1,22 @@
 <template>
-  <el-row>
-    <el-col :span="4">
-      <el-card :body-style="{ padding: '0px' }">
-        <img :src="url" class="image" />
-        <div style="padding: 14px;">
-          <span>{{title}}</span>
-          <div class="bottom clearfix">
-            <span class="author">{{author}}</span>
-            <!-- <time class="time">{{ currentDate }}</time> -->
-          </div>
-        </div>
-      </el-card>
-    </el-col>
-  </el-row>
+  <el-card :body-style="{ padding: '0px' }">
+    <img :src="url" class="image" />
+    <div style="padding: 14px;">
+      <span>{{title}}</span>
+      <div class="bottom clearfix">
+        <span class="author">{{author}}</span>
+        <!-- <time class="time">{{ currentDate }}</time> -->
+      </div>
+    </div>
+  </el-card>
 </template>
 
 <script>
 export default {
   props: {
-    url:String,
-    title:String,
-    author:String,
+    url: String,
+    title: String,
+    author: String
   }
 };
 </script>

@@ -1,19 +1,20 @@
 <template>
-  <div>
-    <RankList :rankList="rankList" />
-    <!-- <el-col :span="6">
-      <Profile :profile="profile"/>
-    </el-col>-->
-
-    <!-- <el-col :span="4">
+  <div class="main">
+    <div class="filter">
       <LeftFilter :tags="tags" @filter="filter(arguments)" />
-    </el-col>
+    </div>
 
-    <el-col :span="15">
+    <div class="recipe">
       <div v-for="recipe in recipeShow">
         <RecipeCard :url="recipe.url" :title="recipe.title" :author="recipe.author" />
       </div>
-    </el-col>-->
+    </div>
+    <div class="profile">
+      <Profile :profile="profile" />
+    </div>
+    <div class="ranklist">
+      <RankList :rankList="rankList" />
+    </div>
   </div>
 </template>
 
@@ -69,4 +70,34 @@ export default {
 </script>
 
 <style>
+.main {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 300px auto;
+}
+.filter {
+  grid-column: 1/2;
+  justify-self: center;
+  align-self: center;
+}
+/* .recipe {
+  background-color: black;
+  grid-column: 2/3;
+  justify-self: center;
+  align-self: start;
+}
+.profile {
+  background-color: brown;
+  grid-row: 1/2;
+  grid-column: 3/4;
+  justify-self: center;
+  align-self: center;
+}
+.ranklist {
+  background-color: cadetblue;
+  grid-row: 2/3;
+  grid-column: 3/4;
+  justify-self: center;
+  align-self: start;
+} */
 </style>
