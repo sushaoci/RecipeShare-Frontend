@@ -1,0 +1,24 @@
+{
+    "tags":[
+        {
+            "name":"default",
+            "icon":"el-icon-switch-button"
+        },
+        {
+            "name":"tag1",
+            "icon":"el-icon-watermelon"
+        },
+        {
+            "name":"tag2",
+            "icon":"el-icon-goblet-square-full"
+        },
+        {
+            "name":"tag3",
+            "icon":"el-icon-refrigerator"
+        },
+        {
+            "name":"tag4",
+            "icon":"el-icon-lollipop"
+        }
+    ]
+}

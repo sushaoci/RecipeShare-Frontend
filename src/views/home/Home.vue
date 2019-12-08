@@ -1,37 +1,56 @@
 <template>
   <div>
-      <RecipeCard :url="recipe.url" :title="recipe.title" :author="recipe.author"/>
+    <el-col :span="4">
+      <LeftFilter :tags="tags" @filter="filter(arguments)" />
+    </el-col>
+
+    <el-col :span="15">
+      <div v-for="recipe in recipeShow">
+        <RecipeCard :url="recipe.url" :title="recipe.title" :author="recipe.author" />
+      </div>
+    </el-col>
   </div>
 </template>
 
 <script>
-import RecipeCard from './components/recipeCard'
+import recipes from "@/data/recipes.json";
+import tags from "@/data/tags.json";
+import RecipeCard from "./components/recipeCard";
+import LeftFilter from "./components/leftFilter";
+
 export default {
-    components:{
-        RecipeCard,
+  components: {
+    RecipeCard,
+    LeftFilter
+  },
+  data() {
+    return {
+      recipes: [],
+      tags: [],
+      recipeShow: []
+    };
+  },
+  methods: {
+    getData() {
+      this.recipes = recipes.recipes;
+      this.tags = tags.tags;
+      this.recipeShow = recipes.recipes;
     },
-    data(){
-        return{
-            recipe:{
-                url:'',
-                title:'',
-                author:'ldx'
-            }
+    filter(vals) {
+      this.recipeShow = [];
+      let tag = vals[0];
+      this.recipes.forEach(i => {
+        if (i.tags.includes(tag)) {
+          this.recipeShow.push(i);
         }
-    },
-    methods:{
-        getData(){
-            this.recipe.url = 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
-            this.recipe.title = '好吃的🍔';
-            this.recipe.author = 'ldx';
-        }
-    },
-    mounted(){
-        this.getData();
+      });
     }
-}
+  },
+  mounted() {
+    this.getData();
+  }
+};
 </script>
 
 <style>
-
 </style>
