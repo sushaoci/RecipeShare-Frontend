@@ -1,30 +1,20 @@
-# wj-vue
+- **这个项目是我在白卷的基础上改的**
+- 为什么不自己写？
+  - 改别人的比较有底气
+  - 随时都可以用自己的新代码另起一个项目
 
-> A Vue.js project
+- 为什么原项目之前的提交都不见了？
+  - 因为该死的sourcetree把我的git库删没了（微笑
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- **如何调试？**
+  - npm install
+  - /login => 编辑菜谱页面
+  - /register => 浏览菜谱页面（包括筛选功能、排行榜等）
+- **结构说明**
+  - 我新加的所有东西都在views和data文件夹中
+  - views/releaseRecipe 是所有关于发布菜谱的页面
+  - views/home 是所有浏览菜谱的页面
+  - data文件夹中有我用到的所有假数据
+- 工作说明
+  - 已完成：基本框架+数据流的传输
+  - 未完成：页面样式
