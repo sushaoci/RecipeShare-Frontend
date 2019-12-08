@@ -36,7 +36,7 @@ export default new Router({
         {
           path: '/index',
           name: 'AppIndex',
-          component: Home,
+          component: MyHome,
           meta: {
             requireAuth: true
           }

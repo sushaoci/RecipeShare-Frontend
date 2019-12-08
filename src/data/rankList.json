@@ -1,0 +1,34 @@
+{
+    "rankList":[
+        {
+            "id":1,
+            "title":"title1",
+            "cover":"",
+            "likes":55
+        },
+        {
+            "id":2,
+            "title":"title2",
+            "cover":"",
+            "likes":44
+        },
+        {
+            "id":3,
+            "title":"title3",
+            "cover":"",
+            "likes":33
+        },
+        {
+            "id":4,
+            "title":"title4",
+            "cover":"",
+            "likes":22
+        },
+        {
+            "id":5,
+            "title":"title5",
+            "cover":"",
+            "likes":11
+        }
+    ]
+}

@@ -1,8 +1,9 @@
 <template>
   <div>
-    <el-col :span="6">
+    <RankList :rankList="rankList" />
+    <!-- <el-col :span="6">
       <Profile :profile="profile"/>
-    </el-col>
+    </el-col>-->
 
     <!-- <el-col :span="4">
       <LeftFilter :tags="tags" @filter="filter(arguments)" />
@@ -19,24 +20,28 @@
 <script>
 import recipes from "@/data/recipes.json";
 import tags from "@/data/tags.json";
-import profile from '@/data/profile.json'
+import profile from "@/data/profile.json";
+import rankList from "@/data/rankList.json";
 
 import RecipeCard from "./components/recipeCard";
 import LeftFilter from "./components/leftFilter";
 import Profile from "./components/rightProfile";
+import RankList from "./components/rankingList";
 
 export default {
   components: {
     RecipeCard,
     LeftFilter,
-    Profile
+    Profile,
+    RankList
   },
   data() {
     return {
       recipes: [],
       tags: [],
       recipeShow: [],
-      profile:[]
+      profile: [],
+      rankList: []
     };
   },
   methods: {
@@ -45,6 +50,7 @@ export default {
       this.tags = tags.tags;
       this.recipeShow = recipes.recipes;
       this.profile = profile.profile;
+      this.rankList = rankList.rankList;
     },
     filter(vals) {
       this.recipeShow = [];
