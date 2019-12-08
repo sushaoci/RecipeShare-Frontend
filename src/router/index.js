@@ -30,13 +30,13 @@ export default new Router({
       // home页面并不需要被访问，只是作为其它组件的父组件
       path: '/home',
       name: 'Home',
-      component: MyHome,
+      component: Home,
       redirect: '/index',
       children: [
         {
           path: '/index',
           name: 'AppIndex',
-          component: MyHome,
+          component: AppIndex,
           meta: {
             requireAuth: true
           }
@@ -70,12 +70,12 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: Release
     },
     {
       path: '/register',
       name: 'Register',
-      component: Register
+      component: MyHome
     },
     {
       path: '/admin',
