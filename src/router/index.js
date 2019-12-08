@@ -10,6 +10,7 @@ import AdminIndex from '../components/admin/AdminIndex'
 import Register from '../components/Register'
 
 import Release from '@/views/releaseRecipe/Release'
+import MyHome from '@/views/home/Home'
 
 Vue.use(Router)
 
@@ -29,13 +30,13 @@ export default new Router({
       // home页面并不需要被访问，只是作为其它组件的父组件
       path: '/home',
       name: 'Home',
-      component: Home,
+      component: MyHome,
       redirect: '/index',
       children: [
         {
           path: '/index',
           name: 'AppIndex',
-          component: Release,
+          component: Home,
           meta: {
             requireAuth: true
           }
