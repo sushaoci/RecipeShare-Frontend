@@ -11,6 +11,9 @@ import Register from '../components/Register'
 
 import Release from '@/views/releaseRecipe/Release'
 import MyHome from '@/views/home/Home'
+import Detail from '@/views/recipeDetail/recipeDetail'
+import Main from '@/views/main/Main'
+import Tandp from '@/views/tipsAndPlan/Tandp'
 
 Vue.use(Router)
 
@@ -71,6 +74,21 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Release
+    },
+    {
+      path: '/detail',
+      name: 'Detail',
+      component: Detail
+    },
+    {
+      path: '/main',
+      name: 'Main',
+      component: Main
+    },
+    {
+      path: '/tandp',
+      name: 'Tandp',
+      component: Tandp
     },
     {
       path: '/register',
