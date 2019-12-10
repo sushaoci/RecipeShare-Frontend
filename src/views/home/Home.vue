@@ -67,13 +67,16 @@ export default {
   },
   mounted() {
     this.getData();
-    axios.get('http://localhost:8080/api/recipeRank',{
-      headers:{
-        "Access-Control-Allow-Origin":"*",
-      }
-    }).then(res=>{
+    axios.get('http://localhost:8080/api/recipeRank').then(res=>{
       console.log(res.data);
       this.rankList = res.data;
+    })
+    axios.get('http://localhost:5000/',{
+      headers:{
+        "Access-Control-Allow-Origin":"*"
+      }
+    }).then(res=>{
+      console.log(res);
     })
   }
 };
