@@ -1,0 +1,36 @@
+{
+    "comments": [
+        {
+            "avatar": "",
+            "name": "usr1",
+            "time": "time1",
+            "content": "content1"
+        },
+        {
+            "avatar": "",
+            "name": "usr2",
+            "time": "time2",
+            "content": "content3"
+        },
+        {
+            "avatar": "",
+            "name": "usr3",
+            "time": "time3",
+            "content": "content3"
+        }
+    ],
+    "cover": "",
+    "avatar": "",
+    "name": "name",
+    "content": "content1",
+    "tableData": [
+        {
+            "mater":"material1",
+            "amount":"amount1"
+        },
+        {
+            "mater":"material2",
+            "amount":"amount2"
+        }
+    ]
+}
