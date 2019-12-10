@@ -9,11 +9,11 @@
       text-color="#222"
       active-text-color="red"
       style="min-width: 1300px">
-      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
+      <!-- <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
         {{ item.navItem }}
-      </el-menu-item>
+      </el-menu-item> -->
       <i class="el-icon-switch-button" v-on:click="logout" style="float:right;font-size: 40px;color: #222;padding: 10px"></i>
-      <span style="position: absolute;padding-top: 20px;right: 43%;font-size: 20px;font-weight: bold">White Jotter - Your Mind Palace</span>
+      <span style="position: absolute;padding-top: 20px;right: 43%;font-size: 20px;font-weight: bold">下厨房 xiachufang</span>
       <el-input
         placeholder="快速搜索..."
         prefix-icon="el-icon-search"

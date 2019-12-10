@@ -29,6 +29,8 @@ import LeftFilter from "./components/leftFilter";
 import Profile from "./components/rightProfile";
 import RankList from "./components/rankingList";
 
+import axios from 'axios'
+
 export default {
   components: {
     RecipeCard,
@@ -65,6 +67,14 @@ export default {
   },
   mounted() {
     this.getData();
+    axios.get('http://localhost:8080/api/recipeRank',{
+      headers:{
+        "Access-Control-Allow-Origin":"*",
+      }
+    }).then(res=>{
+      console.log(res.data);
+      this.rankList = res.data;
+    })
   }
 };
 </script>

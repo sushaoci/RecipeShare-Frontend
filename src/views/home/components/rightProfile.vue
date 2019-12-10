@@ -1,12 +1,15 @@
 <template>
   <el-card>
-    <el-avatar :src="profile.avatar"></el-avatar>
-    <h1>{{profile.name}}</h1>
+    <div class="info" @click="onclick">
+      <el-avatar :src="profile.avatar"></el-avatar>
+      <h1>{{profile.name}}</h1>
+    </div>
     <p>
       {{profile.likes}} 喜欢
       {{profile.creates}} 创建
     </p>
-    <el-button>创建菜单</el-button>
+    <el-button @click="create">创建菜单</el-button>
+    <el-button @click="plan">今日计划</el-button>
   </el-card>
 </template>
 
@@ -18,6 +21,17 @@ export default {
       name: String,
       likes: Number,
       creates: Number
+    }
+  },
+  methods: {
+    onclick() {
+      this.$router.push({ path: "/main" });
+    },
+    create() {
+      this.$router.push({ path: "/release" });
+    },
+    plan() {
+      this.$router.push({ path: "/tandp" });
     }
   }
 };

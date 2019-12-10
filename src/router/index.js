@@ -24,7 +24,7 @@ export default new Router({
       path: '/',
       name: 'index',
       redirect: '/index',
-      component: AppIndex,
+      component: MyHome,
       meta: {
         requireAuth: true
       }
@@ -39,10 +39,25 @@ export default new Router({
         {
           path: '/index',
           name: 'AppIndex',
-          component: AppIndex,
+          component: MyHome,
           meta: {
             requireAuth: true
           }
+        },
+        {
+          path: '/detail',
+          name: 'Detail',
+          component: Detail
+        },
+        {
+          path: '/release',
+          name: 'Release',
+          component: Release
+        }, 
+        {
+          path: '/tandp',
+          name: 'Tandp',
+          component: Tandp
         },
         {
           path: '/jotter',
@@ -71,29 +86,19 @@ export default new Router({
       ]
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Release
-    },
-    {
-      path: '/detail',
-      name: 'Detail',
-      component: Detail
-    },
-    {
       path: '/main',
       name: 'Main',
       component: Main
     },
     {
-      path: '/tandp',
-      name: 'Tandp',
-      component: Tandp
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
     {
       path: '/register',
       name: 'Register',
-      component: MyHome
+      component: Register
     },
     {
       path: '/admin',

@@ -7,22 +7,11 @@
 </template>
 
 <script>
-import tandp from "@/data/tipsAndPlan.json";
-
 export default {
-  data() {
-    return {
-      tips: []
-    };
+  props:{
+    tips:Array,
   },
-  methods: {
-    getData() {
-      this.tips = tandp.tips;
-    }
-  },
-  mounted() {
-    this.getData();
-  }
+
 };
 </script>
 

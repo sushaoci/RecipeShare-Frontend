@@ -12,25 +12,14 @@
 
 <script>
 import RecipeCard from "@/views/home/components/recipeCard";
-import tandp from "@/data/tipsAndPlan.json";
 
 export default {
   components: {
     RecipeCard
   },
-  data() {
-    return {
-      plans: []
-    };
+  props:{
+    plans:Array,
   },
-  methods: {
-    getData() {
-      this.plans = tandp.plans;
-    }
-  },
-  mounted() {
-    this.getData();
-  }
 };
 </script>
 

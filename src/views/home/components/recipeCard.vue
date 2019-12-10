@@ -1,14 +1,16 @@
 <template>
-  <el-card :body-style="{ padding: '0px' }">
-    <img :src="url" class="image" />
-    <div style="padding: 14px;">
-      <span>{{title}}</span>
-      <div class="bottom clearfix">
-        <span class="author">{{author}}</span>
-        <!-- <time class="time">{{ currentDate }}</time> -->
+  <div @click="onclick">
+    <el-card :body-style="{ padding: '0px' }">
+      <img :src="url" class="image" />
+      <div style="padding: 14px;">
+        <span>{{title}}</span>
+        <div class="bottom clearfix">
+          <span class="author">{{author}}</span>
+          <!-- <time class="time">{{ currentDate }}</time> -->
+        </div>
       </div>
-    </div>
-  </el-card>
+    </el-card>
+  </div>
 </template>
 
 <script>
@@ -17,6 +19,11 @@ export default {
     url: String,
     title: String,
     author: String
+  },
+  methods: {
+    onclick() {
+      this.$router.push({path:'/detail'})
+    }
   }
 };
 </script>

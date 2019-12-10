@@ -1,7 +1,7 @@
 <template>
   <el-card>
     <div v-for="i in rankList">
-      <rank :id="i.id" :title="i.title" :likes="i.likes" />
+      <rank :id="i.recipeId" :title="i.recipeName" :likes="i.likeNum" />
     </div>
   </el-card>
 </template>

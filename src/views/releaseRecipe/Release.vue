@@ -44,15 +44,17 @@ export default {
   },
   methods: {
     submit() {
-      let recipe = {};
-      recipe.name = this.name;
-      recipe.cover = this.$refs.cover.getAll();
-      recipe.material = this.$refs.material.getAll();
-      recipe.steps = this.$refs.steps.getAll();
+      // let recipe = {};
+      // recipe.name = this.name;
+      // recipe.cover = this.$refs.cover.getAll();
+      // recipe.material = this.$refs.material.getAll();
+      // recipe.steps = this.$refs.steps.getAll();
 
-      let formData = new FormData();
-      formData.append("recipe", recipe);
-      axios.post(global.url + "/recipe/release",formData).then();
+      // let formData = new FormData();
+      // formData.append("recipe", recipe);
+      // axios.post(global.url + "/recipe/release",formData).then();
+
+      this.$router.push({path:'/home'})
     }
   },
   mounted() {}
