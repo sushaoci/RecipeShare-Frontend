@@ -1,12 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import AppIndex from '../components/home/AppIndex'
-import JotterIndex from '../components/jotter/JotterIndex'
-import Editor from '../components/jotter/Editor'
-import LibraryIndex from '../components/library/LibraryIndex'
 import Login from '../components/Login'
 import Home from '../components/Home'
-import AdminIndex from '../components/admin/AdminIndex'
 import Register from '../components/Register'
 
 import Release from '@/views/releaseRecipe/Release'
@@ -60,30 +55,6 @@ export default new Router({
           name: 'Tandp',
           component: Tandp
         },
-        {
-          path: '/jotter',
-          name: 'Jotter',
-          component: JotterIndex,
-          meta: {
-            requireAuth: true
-          }
-        },
-        {
-          path: '/editor',
-          name: 'Editor',
-          component: Editor,
-          meta: {
-            requireAuth: true
-          }
-        },
-        {
-          path: '/library',
-          name: 'Library',
-          component: LibraryIndex,
-          meta: {
-            requireAuth: true
-          }
-        }
       ]
     },
     {
@@ -106,13 +77,5 @@ export default new Router({
       name: 'Register',
       component: Register
     },
-    {
-      path: '/admin',
-      name: 'Admin',
-      component: AdminIndex,
-      meta: {
-        requireAuth: true
-      }
-    }
   ]
 })
