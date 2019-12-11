@@ -10,7 +10,7 @@ import 'mavon-editor/dist/css/index.css'
 import store from './store'
 
 var axios = require('axios')
-axios.defaults.baseURL = 'http://localhost:8080/api'
+axios.defaults.baseURL = 'http://localhost:8443/api'
 // 使请求带上凭证信息
 axios.defaults.withCredentials = false
 
