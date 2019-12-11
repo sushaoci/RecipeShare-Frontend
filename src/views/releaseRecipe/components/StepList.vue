@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      length: 5
+      length: 4
     };
   },
   methods: {
