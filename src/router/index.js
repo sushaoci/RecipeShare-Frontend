@@ -14,6 +14,7 @@ import MyHome from '@/views/home/Home'
 import Detail from '@/views/recipeDetail/recipeDetail'
 import Main from '@/views/main/Main'
 import Tandp from '@/views/tipsAndPlan/Tandp'
+import otherMain from '@/views/main/otherMain'
 
 Vue.use(Router)
 
@@ -89,6 +90,11 @@ export default new Router({
       path: '/main',
       name: 'Main',
       component: Main
+    },
+    {
+      path: '/othermain',
+      name: 'OtherMain',
+      component: otherMain
     },
     {
       path: '/login',

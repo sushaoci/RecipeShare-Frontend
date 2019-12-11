@@ -36,8 +36,8 @@
 
 <script>
 import Comments from "./components/comments";
-import axios from 'axios';
-import global from '@/global/global'
+import axios from "axios";
+import global from "@/global/global";
 
 import comments from "@/data/comments";
 export default {
@@ -51,29 +51,75 @@ export default {
       name: "",
       content: "",
       tableData: [],
-      comments: []
+      comments: [],
+
+      authorid: "",
+
+      recipeid: ""
     };
   },
   methods: {
     getData() {
-      // this.cover = comments.cover;
-      // this.avatar = comments.avatar;
-      // this.name = comments.name;
-      // this.content = comments.content;
-      // this.tableData = comments.tableData;
-      // this.comments = comments.comments;
+      this.recipeid = this.$route.query.id;
 
-      // this.$route.query.env
-      axios.get(global.url+'/user').then();
-      axios.get(global.url+'/').then();
+      // let formData = new FormData();
+      // formData.append("recipeid", this.recipeid);
+
+      // axios.post(global.url + "", formData).then(res => {
+      //   this.cover = res.
+      //   this.avatar = res.
+      //   this.name = res.
+      //   this.content = res.
+      //   this.tableData = res.
+      //   this.comments = res.
+      //   this.authorid = res.
+      // });
+
+      this.cover = comments.cover;
+      this.avatar = comments.avatar;
+      this.name = comments.name;
+      this.content = comments.content;
+      this.tableData = comments.tableData;
+      this.comments = comments.comments;
+
+      this.authorid = comments.authorid;
     },
     clicked(arg) {
       // console.log('fu',arg[0])
+      let formData = new FormData();
+      formData.append("id", global.id);
+      formData.append("recipeid", this.recipeid);
+      formData.append("comment", arg[0]);
+
+      let _this = this;
+      axios.post(global.url + "", formData).then(res => {
+        _this.getData();
+      });
     },
-    plan() {},
-    like() {},
-    into(){
-        console.log('into');
+    plan() {
+      // let formData = new FormData();
+      // formData.append("id", global.id);
+      // formData.append("recipeid", this.recipeid);
+      // axios.post(global.url + "", formData).then();
+    },
+    like() {
+      // let formData = new FormData();
+      // formData.append("id", global.id);
+      // formData.append("recipeid", this.recipeid);
+      // axios.post(global.url + "", formData).then();
+    },
+    into() {
+      if (global.id == this.authorid) {
+        this.$router.push({
+          path: "/main",
+          query: {id:global.id}
+        });
+      } else {
+        this.$router.push({
+          path: "/otherMain",
+          query: {id:this.authorid}
+        });
+      }
     }
   },
   mounted() {

@@ -1,11 +1,11 @@
 <template>
   <el-card class="box-card">
-    <el-row  gutter="25" >
+    <el-row  :gutter="25" >
       <el-col :span="2" >
-        <snap class="name">{{this.index}}</snap>
+        <span class="name">{{this.index}}</span>
       </el-col>
       <el-col :span="10" >
-        <el-input  size="max" type="textarea" :rows="6" placeholder="请输入内容" v-model="content"></el-input>
+        <el-input size="max" type="textarea" :rows="6" placeholder="请输入内容" v-model="content"></el-input>
       </el-col>
       <el-col :span="12">
         <ImgUpload ref="img" />

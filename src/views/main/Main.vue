@@ -14,7 +14,13 @@
       <div class="created">
         <h1>我的发布</h1>
         <div v-for="recipe in created">
-          <RecipeCard :url="recipe.url" :title="recipe.title" :author="recipe.author" />
+          <RecipeCard
+            :url="recipe.url"
+            :title="recipe.title"
+            :author="recipe.author"
+            :thumb="recipe.thumb"
+            :id="recipe.id"
+          />
         </div>
       </div>
     </el-main>
@@ -25,24 +31,31 @@
 import RecipeCard from "@/views/home/components/recipeCard";
 import recipes from "@/data/recipes";
 
+import axios from "axios";
+import global from "@/global/global";
+
 export default {
   components: {
     RecipeCard
   },
   data() {
     return {
-      likes:[],
-      created:[],
+      likes: [],
+      created: []
     };
   },
   methods: {
     getData() {
+      // axios.get(global.url + "").then(res => {
+      //   this.likes = res.
+      //   this.created = res.
+      // });
       this.likes = recipes.recipes;
       this.created = recipes.recipes;
     }
   },
-  mounted(){
-      this.getData();
+  mounted() {
+    this.getData();
   }
 };
 </script>

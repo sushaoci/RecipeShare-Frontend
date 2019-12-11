@@ -6,6 +6,7 @@
         <span>{{title}}</span>
         <div class="bottom clearfix">
           <span class="author">{{author}}</span>
+          <span>{{ thumb }} 点赞</span>
           <!-- <time class="time">{{ currentDate }}</time> -->
         </div>
       </div>
@@ -14,17 +15,21 @@
 </template>
 
 <script>
+import global from '@/global/global'
+
 export default {
   props: {
     url: String,
     title: String,
-    author: String
+    author: String,
+    thumb:Number,
+    id:Number,
   },
   methods: {
     onclick() {
       this.$router.push({
         path: "/detail",
-        query: {  }
+        query: {id:this.id}
       });
     }
   }

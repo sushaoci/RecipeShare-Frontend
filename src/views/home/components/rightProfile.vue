@@ -7,6 +7,8 @@
     <p>
       {{profile.likes}} 喜欢
       {{profile.creates}} 创建
+      {{profile.follow}} 关注
+      {{profile.fan}} 粉丝
     </p>
     <el-button @click="create">创建菜单</el-button>
     <el-button @click="plan">今日计划</el-button>

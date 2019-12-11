@@ -1,9 +1,15 @@
 <template>
   <div class="block">
     <el-timeline>
-      <div v-for="i in plans">
-        <el-timeline-item :timestamp="i.time" placement="top">
-          <RecipeCard :url="i.url" :title="i.title" :author="i.author" />
+      <div v-for="recipe in plans">
+        <el-timeline-item :timestamp="recipe.time" placement="top">
+          <RecipeCard
+            :url="recipe.url"
+            :title="recipe.title"
+            :author="recipe.author"
+            :thumb="recipe.thumb"
+            :id="recipe.id"
+          />
         </el-timeline-item>
       </div>
     </el-timeline>
@@ -17,9 +23,9 @@ export default {
   components: {
     RecipeCard
   },
-  props:{
-    plans:Array,
-  },
+  props: {
+    plans: Array
+  }
 };
 </script>
 

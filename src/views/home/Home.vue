@@ -1,32 +1,34 @@
 <template>
-<el-container>
-    <el-aside width="200px"> 
+  <el-container>
+    <el-aside width="200px">
       <div class="filter">
-      <LeftFilter :tags="tags" @filter="filter(arguments)" />
-    </div>
-</el-aside>
+        <LeftFilter :tags="tags" @filter="filter(arguments)" />
+      </div>
+    </el-aside>
     <el-container>
       <el-main style="padding-top:0px">
-      <div class="recipe">
-      <div v-for="recipe in recipeShow">
-        <RecipeCard :url="recipe.url" :title="recipe.title" :author="recipe.author" />
-      </div>
-    </div>
-    </el-main>
-   <el-aside width="300px"> 
-    
-    <div class="profile">
-      <Profile :profile="profile" />
-    </div>
-    <div class="ranklist">
-      <RankList :rankList="rankList" />
-    </div>
-    
-</el-aside>
-
+        <div class="recipe">
+          <div v-for="recipe in recipeShow">
+            <RecipeCard
+              :url="recipe.url"
+              :title="recipe.title"
+              :author="recipe.author"
+              :thumb="recipe.thumb"
+              :id="recipe.id"
+            />
+          </div>
+        </div>
+      </el-main>
+      <el-aside width="300px">
+        <div class="profile">
+          <Profile :profile="profile" />
+        </div>
+        <div class="ranklist">
+          <RankList :rankList="rankList" />
+        </div>
+      </el-aside>
     </el-container>
-</el-container>
-
+  </el-container>
 </template>
 
 <script>
@@ -40,7 +42,8 @@ import LeftFilter from "./components/leftFilter";
 import Profile from "./components/rightProfile";
 import RankList from "./components/rankingList";
 
-import axios from 'axios'
+import axios from "axios";
+import global from "@/global/global";
 
 export default {
   components: {
@@ -60,11 +63,22 @@ export default {
   },
   methods: {
     getData() {
+      // axios.get(global.url + "").then(res => {
+      //   this.recipes = res.
+      //   this.tags = res.
+      //   this.recipeShow = res.
+      //   this.profile = res.
+      //   this.rankList = res.
+
+      //   global.id = res.
+      // });
       this.recipes = recipes.recipes;
       this.tags = tags.tags;
       this.recipeShow = recipes.recipes;
       this.profile = profile.profile;
       this.rankList = rankList.rankList;
+
+      global.id = this.profile.id;
     },
     filter(vals) {
       this.recipeShow = [];
@@ -78,17 +92,6 @@ export default {
   },
   mounted() {
     this.getData();
-    axios.get('http://localhost:8080/api/recipeRank').then(res=>{
-      console.log(res.data);
-      this.rankList = res.data;
-    })
-    axios.get('http://localhost:5000/',{
-      headers:{
-        "Access-Control-Allow-Origin":"*"
-      }
-    }).then(res=>{
-      console.log(res);
-    })
   }
 };
 </script>
@@ -104,7 +107,7 @@ export default {
   justify-self: center;
   align-self: center;
 }
- /* .recipe {
+/* .recipe {
   background-color: black;
   grid-column: 2/3;
   justify-self: center;
