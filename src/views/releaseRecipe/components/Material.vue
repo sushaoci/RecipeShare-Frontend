@@ -1,9 +1,13 @@
 <template>
   <div>
-    <div v-for="i in length">
+    
+    <div  v-for="i in length">
       <MaterRow ref="rows"/>
+  
     </div>
-    <el-button @click="addRow" icon="el-icon-plus"></el-button>
+  <div class="button1">
+    <el-button type="primary" @click="addRow" icon="el-icon-plus"></el-button>
+    </div>
   </div>
 </template>
 
@@ -37,4 +41,11 @@ export default {
 </script>
 
 <style>
+.button1{
+   display: flex;
+   justify-content:center;
+  
+}
+
+
 </style>

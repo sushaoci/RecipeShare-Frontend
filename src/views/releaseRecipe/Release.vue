@@ -1,27 +1,47 @@
 <template>
   <div>
-    <div class="name">
-      <h1>菜谱名称</h1>
-      <el-input v-model="name" placeholder="菜谱名称"></el-input>
+    <div class ="middle" >
+    <el-card class="box-card1">
+    <div slot="header" class="clearfix">
+      <span style="font-weight: bold;font-size: 20px">上传菜谱</span>
     </div>
-    <div class="img">
-      <h1>上传封面</h1>
-      <el-card class="box-card">
-        <ImgUpload ref="cover" />
-      </el-card>
-    </div>
-    <div class="material">
-      <h1>用料</h1>
-      <el-card class="box-card">
+    <div class="block">
+      <el-timeline>
+        <el-timeline-item  timestamp="菜谱名称" placement="top">
+          <div class="name">
+          <el-input v-model="name" placeholder="菜谱名称"></el-input>
+         </div>
+        </el-timeline-item>
+        <el-timeline-item timestamp="用料" placement="top">
+           <div class="material">
+      <el-card class="box-card2">
         <Material ref="material" />
       </el-card>
     </div>
-    <div class="step">
-      <h1>做法</h1>
-      <StepList ref="steps" />
+        </el-timeline-item>
+        <el-timeline-item timestamp="做法" placement="top">
+         <div class="step">
+         <StepList ref="steps" />
+         </div >
+        </el-timeline-item>
+    
+        <el-timeline-item >
+        <div class="step">
+         </div >
+        </el-timeline-item>
+      </el-timeline>
+
+
     </div>
-    <el-button type="primary" @click.prevent="submit">确定上传</el-button>
+    <div class="button">
+      <el-button type="primary" @click.prevent="submit">确定上传</el-button>
+</div>
+  </el-card>
+    </div>
+
+    
   </div>
+  
 </template>
 
 <script>
@@ -62,4 +82,28 @@ export default {
 </script>
 
 <style>
+.middle{
+  position: relative;
+  margin: 18%;
+   
+}
+.button{
+  display: flex;
+  justify-content: center;
+}
+ .box-card1 {
+    text-align: left;
+    margin: 0 auto; 
+  }
+  .material{
+   align-content :center;
+}
+  .el-timeline-item{
+    font-weight: bold;
+    font-size: 30px；
+  }
+  .block{
+
+    width:90%;
+  }
 </style>

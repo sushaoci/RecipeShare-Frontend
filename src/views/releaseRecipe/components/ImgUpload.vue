@@ -10,6 +10,7 @@
       :on-preview="handlePictureCardPreview"
       :on-remove="handleRemove"
       aria-setsize="20"
+      name="upload"
     >
       <i class="el-icon-plus"></i>
     </el-upload>
@@ -46,4 +47,8 @@ export default {
 </script>
 
 <style>
+ .upload {
+    width: 18px;
+    height: 178px;
+  }
 </style>

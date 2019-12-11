@@ -1,11 +1,11 @@
 <template>
   <el-card class="box-card">
-    <el-row>
-      <el-col :span="2">
-        <h3>{{this.index}}</h3>
+    <el-row  gutter="25" >
+      <el-col :span="2" >
+        <snap class="name">{{this.index}}</snap>
       </el-col>
-      <el-col :span="10">
-        <el-input type="textarea" :rows="6" placeholder="请输入内容" v-model="content"></el-input>
+      <el-col :span="10" >
+        <el-input  size="max" type="textarea" :rows="6" placeholder="请输入内容" v-model="content"></el-input>
       </el-col>
       <el-col :span="12">
         <ImgUpload ref="img" />
@@ -40,4 +40,15 @@ export default {
 </script>
 
 <style>
+.name{
+  color:#909399;
+  line-height:1;
+  font-size:14px;
+  text-align: center;
+
+}
+.el-textarea__inner{
+  height:148px;
+}
+
 </style>
