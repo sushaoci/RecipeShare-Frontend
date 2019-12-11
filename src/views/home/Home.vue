@@ -1,21 +1,32 @@
 <template>
-  <div class="main">
-    <div class="filter">
+<el-container>
+    <el-aside width="200px"> 
+      <div class="filter">
       <LeftFilter :tags="tags" @filter="filter(arguments)" />
     </div>
-
-    <div class="recipe">
+</el-aside>
+    <el-container>
+      <el-main style="padding-top:0px">
+      <div class="recipe">
       <div v-for="recipe in recipeShow">
         <RecipeCard :url="recipe.url" :title="recipe.title" :author="recipe.author" />
       </div>
     </div>
+    </el-main>
+   <el-aside width="300px"> 
+    
     <div class="profile">
       <Profile :profile="profile" />
     </div>
     <div class="ranklist">
       <RankList :rankList="rankList" />
     </div>
-  </div>
+    
+</el-aside>
+
+    </el-container>
+</el-container>
+
 </template>
 
 <script>
@@ -93,7 +104,7 @@ export default {
   justify-self: center;
   align-self: center;
 }
-/* .recipe {
+ /* .recipe {
   background-color: black;
   grid-column: 2/3;
   justify-self: center;
@@ -105,12 +116,12 @@ export default {
   grid-column: 3/4;
   justify-self: center;
   align-self: center;
-}
-.ranklist {
+} */
+/* .ranklist {
   background-color: cadetblue;
   grid-row: 2/3;
   grid-column: 3/4;
   justify-self: center;
   align-self: start;
-} */
+}  */
 </style>

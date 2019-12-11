@@ -5,10 +5,16 @@
         <i>{{id}}</i>
       </el-col>
       <el-col :span="20">
-        <el-row>
-            <h1>{{title}}</h1>
+        <el-row >
+          <div class="row-tit">
+            <snap class="title">{{title}}这里是标题</snap>
+          </div>
         </el-row>
-        <el-row>{{likes}} 喜欢</el-row>
+        <el-row>
+           <div class="row-title">
+          {{likes}} 喜欢
+           </div>
+        </el-row>
       </el-col>
     </el-row>
   </div>
@@ -27,5 +33,17 @@ export default {
 <style>
 h1{
     font-size: 1em
+}
+.title{
+  font-weight: bold;
+}
+.row-tit{
+  display: flex;
+  justify-content: left;
+}
+.row-title{
+  display: flex;
+  justify-content:flex-end;
+  color:#909399;
 }
 </style>

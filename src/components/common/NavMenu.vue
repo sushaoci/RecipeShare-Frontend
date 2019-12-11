@@ -5,20 +5,21 @@
       router
       mode="horizontal"
       @select="handleSelect"
-      background-color="white"
-      text-color="#222"
+      background-color="#409EFF"
+      text-color="#fff"
       active-text-color="red"
-      style="min-width: 1300px">
+      style="min-width: 130px">
       <!-- <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
         {{ item.navItem }}
       </el-menu-item> -->
-      <i class="el-icon-switch-button" v-on:click="logout" style="float:right;font-size: 40px;color: #222;padding: 10px"></i>
-      <span style="position: absolute;padding-top: 20px;right: 43%;font-size: 20px;font-weight: bold">下厨房 xiachufang</span>
-      <el-input
+      <i class="el-icon-food" style="font-size: 30px;color:#fff;padding-right: 95px;padding-top: 15px"></i>
+      <i class="el-icon-switch-button" v-on:click="logout" style="float:right;font-size: 20px;color:#fff;padding: 20px"></i>
+      <span style="position: absolute;padding-top: 18px;color:#fefefe;right: 43%;font-size: 22px;font-weight: bold">Health Recipe</span>
+      <el-input style="width: 300px;position:absolute;margin-top: 12px;right: 18%;"
         placeholder="快速搜索..."
         prefix-icon="el-icon-search"
+       
         size="medium"
-        style="width: 300px;position:absolute;margin-top: 12px;right: 18%"
         v-model="keywords">
       </el-input>
     </el-menu>
