@@ -12,13 +12,14 @@
       <!-- <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
         {{ item.navItem }}
       </el-menu-item> -->
-      <i class="el-icon-food" style="font-size: 30px;color:#fff;padding-right: 95px;padding-top: 15px"></i>
+      <i class="el-icon-food" style="font-size: 40px;color:#fff;padding-right: 1003px;padding-top: 10px"></i>
       <i class="el-icon-switch-button" v-on:click="logout" style="float:right;font-size: 20px;color:#fff;padding: 20px"></i>
-      <span style="position: absolute;padding-top: 18px;color:#fefefe;right: 43%;font-size: 22px;font-weight: bold">Health Recipe</span>
-      <el-input style="width: 300px;position:absolute;margin-top: 12px;right: 18%;"
+     
+      <span class="title-name">Healthy Recipe</span>
+      
+      <el-input style="width: 300px;position:absolute;margin-top: 12px;right: 42%;"
         placeholder="快速搜索..."
         prefix-icon="el-icon-search"
-       
         size="medium"
         v-model="keywords">
       </el-input>
@@ -73,6 +74,14 @@
     pointer-events: none;
   }
 
+.title-name{
+  position: absolute;
+  padding-top: 12px;
+  color:#fefefe;
+  right: 70%;
+  font-size: 32px;
+  font-weight: bold
+  }
   .el-icon-switch-button {
     cursor: pointer;
     /*去除点击时的框线*/
