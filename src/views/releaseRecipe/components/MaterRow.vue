@@ -1,9 +1,15 @@
 <template>
-  <el-row>
+  <el-row gutter="22">
+      <el-col :span="1">
+        <p>  </p>
+    </el-col>
+    <div class="left">
     <el-col :span="12">
       <el-input placeholder="食材" v-model="name" clearable></el-input>
     </el-col>
-    <el-col :span="4">
+    </div>
+    <div class="right">
+    <el-col :span="6">
       <el-autocomplete
         v-model="amount"
         class="inline-input"
@@ -12,6 +18,7 @@
         @select="handleSelect"
       ></el-autocomplete>
     </el-col>
+    </div>
   </el-row>
 </template>
 
@@ -65,4 +72,11 @@ export default {
 </script>
 
 <style>
+  .el-row {
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 0;
+    };
+  }
+  
 </style>
