@@ -1,5 +1,5 @@
 <script>
-const url="http://xxx/api"
+const url="http://localhost/api"
 export default {
     url,
 }

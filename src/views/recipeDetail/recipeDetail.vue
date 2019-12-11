@@ -36,6 +36,8 @@
 
 <script>
 import Comments from "./components/comments";
+import axios from 'axios';
+import global from '@/global/global'
 
 import comments from "@/data/comments";
 export default {
@@ -54,12 +56,16 @@ export default {
   },
   methods: {
     getData() {
-      this.cover = comments.cover;
-      this.avatar = comments.avatar;
-      this.name = comments.name;
-      this.content = comments.content;
-      this.tableData = comments.tableData;
-      this.comments = comments.comments;
+      // this.cover = comments.cover;
+      // this.avatar = comments.avatar;
+      // this.name = comments.name;
+      // this.content = comments.content;
+      // this.tableData = comments.tableData;
+      // this.comments = comments.comments;
+
+      // this.$route.query.env
+      axios.get(global.url+'/user').then();
+      axios.get(global.url+'/').then();
     },
     clicked(arg) {
       // console.log('fu',arg[0])
