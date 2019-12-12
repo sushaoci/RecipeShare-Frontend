@@ -22,7 +22,9 @@ export default {
       avatar: String,
       name: String,
       likes: Number,
-      creates: Number
+      creates: Number,
+      follow:Number,
+      fan:Number,
     }
   },
   methods: {

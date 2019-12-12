@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-header>
-      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-      <p>用户名</p>
+      <el-avatar :src="avatar"></el-avatar>
+      <p> {{name}} </p>
     </el-header>
 
     <el-main>
@@ -36,6 +36,8 @@ export default {
   },
   data() {
     return {
+      avatar:"",
+      name:"",
       likes: [],
       created: [],
       isfollow: "",
@@ -56,6 +58,8 @@ export default {
       //     this.isfollow = res.
       //   });
 
+      this.avatar = recipes.avatar;
+      this.name = recipes.name;
       this.likes = recipes.recipes;
       this.created = recipes.recipes;
       this.isfollow = recipes.isfollow;
