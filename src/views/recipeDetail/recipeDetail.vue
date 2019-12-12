@@ -30,19 +30,25 @@
         <el-table-column prop="amount" label="用量" width="180"></el-table-column>
       </el-table>
     </div>
+    <div>
+      <h3>具体步骤</h3>
+      <stepList :steps="steps"/>
+    </div>
     <Comments :comments="comments" @clicked="clicked(arguments)" />
   </div>
 </template>
 
 <script>
 import Comments from "./components/comments";
+import stepList from './components/stepList'
 import axios from "axios";
 import global from "@/global/global";
 
 import comments from "@/data/comments";
 export default {
   components: {
-    Comments
+    Comments,
+    stepList,
   },
   data() {
     return {
@@ -51,6 +57,7 @@ export default {
       name: "",
       content: "",
       tableData: [],
+      steps:[],
       comments: [],
 
       authorid: "",
@@ -71,6 +78,7 @@ export default {
       //   this.name = res.
       //   this.content = res.
       //   this.tableData = res.
+      //   this.steps = res.
       //   this.comments = res.
       //   this.authorid = res.
       // });
@@ -80,6 +88,7 @@ export default {
       this.name = comments.name;
       this.content = comments.content;
       this.tableData = comments.tableData;
+      this.steps = comments.steps;
       this.comments = comments.comments;
 
       this.authorid = comments.authorid;

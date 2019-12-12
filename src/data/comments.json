@@ -1,4 +1,15 @@
 {
+    "steps": [
+        {
+            "content": "content1"
+        },
+        {
+            "content": "content2"
+        },
+        {
+            "content": "content3"
+        }
+    ],
     "comments": [
         {
             "avatar": "",
@@ -25,12 +36,12 @@
     "content": "content1",
     "tableData": [
         {
-            "mater":"material1",
-            "amount":"amount1"
+            "mater": "material1",
+            "amount": "amount1"
         },
         {
-            "mater":"material2",
-            "amount":"amount2"
+            "mater": "material2",
+            "amount": "amount2"
         }
     ]
 }
