@@ -141,4 +141,7 @@ export default {
 .block {
   width: 90%;
 }
+  .nav-menu {
+    margin-bottom: 0px;
+    }
 </style>

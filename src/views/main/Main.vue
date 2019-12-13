@@ -1,18 +1,23 @@
 <template>
   <div>
-    <el-header>
+ <div class="head">
       <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+      <p></p>
       <p>用户名</p>
-    </el-header>
+ </div>
+ <el-container>
+     <el-aside width="150px"></el-aside>
     <el-main>
+       
+
       <div class="likes">
-        <h1>我的收藏</h1>
+        <h3 class="first">我的收藏</h3>
         <div v-for="recipe in likes">
           <RecipeCard :url="recipe.url" :title="recipe.title" :author="recipe.author" />
         </div>
       </div>
       <div class="created">
-        <h1>我的发布</h1>
+        <h3>我的发布</h3>
         <div v-for="recipe in created">
           <RecipeCard
             :url="recipe.url"
@@ -23,7 +28,11 @@
           />
         </div>
       </div>
+    
     </el-main>
+     <el-aside width="150px"></el-aside>
+
+    </el-container>
   </div>
 </template>
 
@@ -61,4 +70,15 @@ export default {
 </script>
 
 <style>
+ .head{
+    background:#F9D349;
+    padding-top:25px;
+    padding-bottom:15px
+  }
+  .first{
+  margin-block-start: 0em;
+}
+p{
+  font-weight:bolder;
+}
 </style>
