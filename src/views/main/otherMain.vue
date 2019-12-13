@@ -1,14 +1,19 @@
 <template>
-  <div>
-    <el-header>
-      <el-avatar :src="avatar"></el-avatar>
-      <p> {{name}} </p>
-    </el-header>
+    <div>
+       <div class="head">
+      <el-avatar :src="avatar"> </el-avatar>
+      <p></p>
+      <p> {{name}} 你的名字</p>
+       <p></p>
+      <el-button @click="follow" :disabled="isfollow">{{status}}</el-button>
+      </div>
+ <el-container>
+   <el-aside width="150px"></el-aside>
 
     <el-main>
-      <el-button @click="follow" :disabled="isfollow">{{status}}</el-button>
+      
       <div class="created">
-        <h1>ta的发布</h1>
+        <h3>ta的发布</h3>
         <div v-for="recipe in created">
           <RecipeCard
             :url="recipe.url"
@@ -20,7 +25,11 @@
         </div>
       </div>
     </el-main>
-  </div>
+     <el-aside width="150px"></el-aside>
+  </el-container>
+    </div>
+
+ 
 </template>
 
 <script>
@@ -87,4 +96,13 @@ export default {
 </script>
 
 <style>
+  .head{
+    background:#F9D349;
+    height: 160px;
+    padding-top:25px;
+    padding-bottom: 0px
+  }
+h3{
+  margin-block-start: 0em;
+}
 </style>

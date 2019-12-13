@@ -99,11 +99,13 @@ export default {
    align-content :center;
 }
   .el-timeline-item{
-    font-weight: bold;
+    font-weight: bolder;
     font-size: 30px；
   }
   .block{
-
     width:90%;
   }
+  .nav-menu {
+    margin-bottom: 0px;
+    }
 </style>

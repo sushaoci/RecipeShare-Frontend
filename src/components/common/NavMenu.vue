@@ -17,7 +17,7 @@
       <i class="el-icon-switch-button" v-on:click="logout"></i>
       <span class="title-name">Healthy Recipe</span>
       
-      <el-input style="width: 300px;position:absolute;margin-top: 12px;right: 42%;"
+      <el-input style="width: 300px;float: left;margin-top: 12px;"
         placeholder="快速搜索..."
         prefix-icon="el-icon-search"
         size="medium"
@@ -82,6 +82,8 @@ padding: 10px
 
 .title-name{
   padding-top: 12px;
+  padding-right: 15px;
+
   color:#000;
   float: left;
   font-size: 32px;

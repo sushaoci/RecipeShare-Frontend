@@ -32,7 +32,7 @@
     </el-row>
     <div>
       <h3>用料表</h3>
-      <el-table :data="tableData"  stripe ="true" fit= "true" style="width: 100%">
+      <el-table :data="tableData"   style="width: 100%">
         <el-table-column prop="mater" label="食材" min-width="170"></el-table-column>
         <el-table-column prop="amount" label="用量" min-width="180"></el-table-column>
       </el-table>
