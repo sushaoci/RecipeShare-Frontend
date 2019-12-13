@@ -4,11 +4,11 @@
       <el-avatar :src="profile.avatar"></el-avatar>
       <h1>{{profile.name}}</h1>
     </div>
-    <p>
-      {{profile.likes}} 喜欢
-      {{profile.creates}} 创建
-      {{profile.follow}} 关注
-      {{profile.fan}} 粉丝
+    <p class="hi">
+      {{profile.likes}} 喜欢 </br>
+      {{profile.creates}} 创建</br>
+      {{profile.follow}} 关注</br>
+      {{profile.fan}} 粉丝</br>
     </p>
     <el-button @click="create">创建菜单</el-button>
     <el-button @click="plan">今日计划</el-button>
@@ -42,4 +42,8 @@ export default {
 </script>
 
 <style>
+.hi{
+  display: flex;
+  flex-flow:column
+}
 </style>

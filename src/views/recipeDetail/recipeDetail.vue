@@ -1,5 +1,13 @@
 <template>
-  <div>
+ <el-container>
+   
+ <el-aside width="200px">
+  </el-aside>
+ 
+ <el-container>
+
+     <el-main>
+   <div>
     <img :src="cover" alt="cover" />
     <el-row>
       <el-col :span="12">
@@ -19,15 +27,14 @@
         </el-col>
       </el-row>
     </div>
-
-    <el-row>
+     <el-row>
       <p>{{content}}</p>
     </el-row>
     <div>
       <h3>用料表</h3>
-      <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="mater" label="食材" width="180"></el-table-column>
-        <el-table-column prop="amount" label="用量" width="180"></el-table-column>
+      <el-table :data="tableData"  stripe ="true" fit= "true" style="width: 100%">
+        <el-table-column prop="mater" label="食材" min-width="170"></el-table-column>
+        <el-table-column prop="amount" label="用量" min-width="180"></el-table-column>
       </el-table>
     </div>
     <div>
@@ -35,7 +42,14 @@
       <stepList :steps="steps"/>
     </div>
     <Comments :comments="comments" @clicked="clicked(arguments)" />
-  </div>
+  </div> -->
+     </el-main>
+     </el-container>
+   
+       <el-aside width="200px">
+     
+       </el-aside> 
+  </el-container>
 </template>
 
 <script>
@@ -138,4 +152,5 @@ export default {
 </script>
 
 <style>
+
 </style>
