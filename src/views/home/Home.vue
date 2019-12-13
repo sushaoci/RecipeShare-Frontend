@@ -69,8 +69,6 @@ export default {
       //   // this.tags = res.
       //   // this.profile = res.
       //   // this.rankList = res.
-
-      //   // global.id = res.
       // });
       axios.get(global.url + "/recipelist").then(res => {
         this.recipes = res.data;
@@ -85,25 +83,18 @@ export default {
       axios.post(global.url + "/recipeRank").then(res => {
         this.rankList = res.data;
       });
-      axios.get(global.url + "/getPersonalInfo").then(res => {
-        //   avatar: String,
-        // name: String,
+
+      let formData = new FormData();
+      formData.append("userId",global.id);
+
+      axios.post(global.url + "/getUserInfoById",formData).then(res => {
         // likes: Number,
         // creates: Number,
-        // follow:Number,
-        // fan:Number,
-        console.log(res.data);
         this.profile.avatar = res.data.image;
         this.profile.name = res.data.username;
         this.profile.follow = res.data.following_num;
         this.profile.fan = res.data.followed_num;
       });
-      // axios.post(global.url + "/getPersonalInfo").then(res => {
-      //   this.profile.avatar = res.image;
-      //   this.profile.name = res.username;
-      //   this.profile.avatar = res.image;
-      //   this.profile.avatar = res.image;
-      // });
     },
     filter(vals) {
       this.recipeShow = [];

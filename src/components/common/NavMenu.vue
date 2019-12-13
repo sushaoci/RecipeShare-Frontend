@@ -47,6 +47,12 @@
       }
     },
     methods: {
+      // back(){
+      //   this.$router.push({
+      //     path:"/index"
+      //   })
+      // },
+
       handleSelect (key, keyPath) {
         console.log(key, keyPath)
       },
