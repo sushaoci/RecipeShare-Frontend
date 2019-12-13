@@ -5,30 +5,18 @@
       router
       mode="horizontal"
       @select="handleSelect"
-      background-color="#409EFF"
+      background-color="#F9D349"
       text-color="#fff"
       active-text-color="red"
       style="min-width: 130px"
     >
       <!-- <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
         {{ item.navItem }}
-      </el-menu-item>-->
-      <!-- <div @click="back">
-        <i
-          class="el-icon-food"
-          style="font-size: 40px;color:#fff;padding-right: 1003px;padding-top: 10px"
-        ></i>
-      </div>-->
-      <i
-        class="el-icon-food"
-        style="font-size: 40px;color:#fff;padding-right: 1003px;padding-top: 10px"
-      ></i>
-      <i
-        class="el-icon-switch-button"
-        v-on:click="logout"
-        style="float:right;font-size: 20px;color:#fff;padding: 20px"
-      ></i>
 
+      </el-menu-item> -->
+      
+      <i class="el-icon-food" ></i>
+      <i class="el-icon-switch-button" v-on:click="logout"></i>
       <span class="title-name">Healthy Recipe</span>
 
       <el-input
@@ -94,26 +82,30 @@ a {
   text-decoration: none;
 }
 
-span {
-  pointer-events: none;
+  span {
+    pointer-events: none;
+  }
+.el-icon-food{
+font-size: 40px;
+color:#000;
+float: left;
+padding: 10px
 }
 
-.title-name {
-  position: absolute;
+.title-name{
   padding-top: 12px;
-  color: #fefefe;
-  right: 70%;
+  color:#000;
+  float: left;
   font-size: 32px;
-  font-weight: bold;
-}
-.el-icon-food {
-  cursor: pointer;
-  /*去除点击时的框线*/
-  outline: 0;
-}
-.el-icon-switch-button {
-  cursor: pointer;
-  /*去除点击时的框线*/
-  outline: 0;
-}
+  font-weight: bold
+  }
+  .el-icon-switch-button {
+    cursor: pointer;
+    /*去除点击时的框线*/
+    outline:0;
+    float:right;
+    font-size: 20px;
+    color:#000;
+    padding: 20px
+  }
 </style>
