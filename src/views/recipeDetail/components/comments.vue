@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{commentsNum}} 评论</p>
+    <h3> 评论({{commentsNum}})</h3>
     <el-row>
       <el-col :span="2">
         <el-avatar :src="avatar"></el-avatar>
