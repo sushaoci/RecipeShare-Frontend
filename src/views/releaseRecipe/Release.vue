@@ -12,7 +12,7 @@
                 <el-input v-model="name" placeholder="菜谱名称"></el-input>
               </div>
             </el-timeline-item>
-            <el-timeline-item timestamp="tag" placement="top">
+            <el-timeline-item timestamp="Tag" placement="top">
               <div class="tag">
                 <el-select v-model="tag" placeholder="请选择">
                   <el-option
@@ -122,6 +122,7 @@ export default {
 .middle {
   position: relative;
   margin: 18%;
+  margin-top:5%;
 }
 .button {
   display: flex;
