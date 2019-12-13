@@ -10,11 +10,11 @@
         <div class="recipe">
           <div v-for="recipe in recipeShow">
             <RecipeCard
-              :url="recipe.url"
-              :title="recipe.title"
-              :author="recipe.author"
-              :thumb="recipe.thumb"
-              :id="recipe.id"
+              :url="recipe.recipeImage"
+              :title="recipe.recipeName"
+              :author="recipe.recipeUsername"
+              :thumb="recipe.likeNum"
+              :id="recipe.recipeId"
             />
           </div>
         </div>
@@ -63,28 +63,53 @@ export default {
   },
   methods: {
     getData() {
-      // axios.get(global.url + "").then(res => {
-      //   this.recipes = res.
-      //   this.tags = res.
-      //   this.recipeShow = res.
-      //   this.profile = res.
-      //   this.rankList = res.
-
-      //   global.id = res.
-      // });
-      this.recipes = recipes.recipes;
       this.tags = tags.tags;
-      this.recipeShow = recipes.recipes;
-      this.profile = profile.profile;
-      this.rankList = rankList.rankList;
+      // axios.get(global.url + "/recipelist").then(res => {
+      //   this.recipes = res.data;
+      //   // this.tags = res.
+      //   // this.profile = res.
+      //   // this.rankList = res.
 
-      global.id = this.profile.id;
+      //   // global.id = res.
+      // });
+      axios.get(global.url + "/recipelist").then(res => {
+        this.recipes = res.data;
+        this.recipeShow = res.data;
+        // this.tags = res.
+        // this.profile = res.
+        // this.rankList = res.
+
+        // global.id = res.
+      });
+      // this.recipes = recipes.recipes;
+      axios.post(global.url + "/recipeRank").then(res => {
+        this.rankList = res.data;
+      });
+      axios.get(global.url + "/getPersonalInfo").then(res => {
+        //   avatar: String,
+        // name: String,
+        // likes: Number,
+        // creates: Number,
+        // follow:Number,
+        // fan:Number,
+        console.log(res.data);
+        this.profile.avatar = res.data.image;
+        this.profile.name = res.data.username;
+        this.profile.follow = res.data.following_num;
+        this.profile.fan = res.data.followed_num;
+      });
+      // axios.post(global.url + "/getPersonalInfo").then(res => {
+      //   this.profile.avatar = res.image;
+      //   this.profile.name = res.username;
+      //   this.profile.avatar = res.image;
+      //   this.profile.avatar = res.image;
+      // });
     },
     filter(vals) {
       this.recipeShow = [];
       let tag = vals[0];
       this.recipes.forEach(i => {
-        if (i.tags.includes(tag)) {
+        if (i.recipeTag.includes(tag)) {
           this.recipeShow.push(i);
         }
       });
