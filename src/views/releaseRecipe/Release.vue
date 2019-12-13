@@ -1,47 +1,53 @@
 <template>
   <div>
-    <div class ="middle" >
-    <el-card class="box-card1">
-    <div slot="header" class="clearfix">
-      <span style="font-weight: bold;font-size: 20px">上传菜谱</span>
-    </div>
-    <div class="block">
-      <el-timeline>
-        <el-timeline-item  timestamp="菜谱名称" placement="top">
-          <div class="name">
-          <el-input v-model="name" placeholder="菜谱名称"></el-input>
-         </div>
-        </el-timeline-item>
-        <el-timeline-item timestamp="用料" placement="top">
-           <div class="material">
-      <el-card class="box-card2">
-        <Material ref="material" />
+    <div class="middle">
+      <el-card class="box-card1">
+        <div slot="header" class="clearfix">
+          <span style="font-weight: bold;font-size: 20px">上传菜谱</span>
+        </div>
+        <div class="block">
+          <el-timeline>
+            <el-timeline-item timestamp="菜谱名称" placement="top">
+              <div class="name">
+                <el-input v-model="name" placeholder="菜谱名称"></el-input>
+              </div>
+            </el-timeline-item>
+            <el-timeline-item timestamp="tag" placement="top">
+              <div class="tag">
+                <el-select v-model="tag" placeholder="请选择">
+                  <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.value"
+                    :value="item.value"
+                  ></el-option>
+                </el-select>
+              </div>
+            </el-timeline-item>
+            <el-timeline-item timestamp="用料" placement="top">
+              <div class="material">
+                <el-card class="box-card2">
+                  <Material ref="material" />
+                </el-card>
+              </div>
+            </el-timeline-item>
+            <el-timeline-item timestamp="做法" placement="top">
+              <div class="step">
+                <StepList ref="steps" />
+              </div>
+            </el-timeline-item>
+
+            <el-timeline-item>
+              <div class="step"></div>
+            </el-timeline-item>
+          </el-timeline>
+        </div>
+        <div class="button">
+          <el-button type="primary" @click.prevent="submit">确定上传</el-button>
+        </div>
       </el-card>
     </div>
-        </el-timeline-item>
-        <el-timeline-item timestamp="做法" placement="top">
-         <div class="step">
-         <StepList ref="steps" />
-         </div >
-        </el-timeline-item>
-    
-        <el-timeline-item >
-        <div class="step">
-         </div >
-        </el-timeline-item>
-      </el-timeline>
-
-
-    </div>
-    <div class="button">
-      <el-button type="primary" @click.prevent="submit">确定上传</el-button>
-</div>
-  </el-card>
-    </div>
-
-    
   </div>
-  
 </template>
 
 <script>
@@ -59,22 +65,53 @@ export default {
   },
   data() {
     return {
-      name: ""
+      name: "",
+      tag: "",
+      options: [
+        {
+          value: "早餐"
+        },
+        {
+          value: "午餐"
+        },
+        {
+          value: "晚餐"
+        },
+        {
+          value: "无糖"
+        },
+        {
+          value: "减肥"
+        },
+        {
+          value: "孕妇"
+        },
+        {
+          value: "老人"
+        },
+        {
+          value: "小孩"
+        },
+        {
+          value: "烘焙"
+        }
+      ]
     };
   },
   methods: {
     submit() {
-      // let recipe = {};
-      // recipe.name = this.name;
-      // recipe.cover = this.$refs.cover.getAll();
-      // recipe.material = this.$refs.material.getAll();
-      // recipe.steps = this.$refs.steps.getAll();
+      let recipe = {};
+      recipe.recipeName = this.name;
+      recipe.recipeTag = this.tag;
+      recipe.recipeImage = this.$refs.cover.getAll();
+      recipe.recipeMaterial = this.$refs.material.getAll();
+      recipe.recipeStep = this.$refs.steps.getAll();
 
-      // let formData = new FormData();
-      // formData.append("recipe", recipe);
-      // axios.post(global.url + "/recipe/release",formData).then();
+      let formData = new FormData();
+      formData.append("recipe", recipe);
+      axios.post(global.url + "/recipe/release",formData).then();
 
-      this.$router.push({path:'/home'})
+      this.$router.push({ path: "/home" });
     }
   },
   mounted() {}
@@ -82,29 +119,28 @@ export default {
 </script>
 
 <style>
-.middle{
+.middle {
   position: relative;
   margin: 18%;
-   
 }
-.button{
+.button {
   display: flex;
   justify-content: center;
 }
- .box-card1 {
-    text-align: left;
-    margin: 0 auto; 
-  }
-  .material{
-   align-content :center;
+.box-card1 {
+  text-align: left;
+  margin: 0 auto;
 }
-  .el-timeline-item{
-    font-weight: bolder;
-    font-size: 30px；
-  }
-  .block{
-    width:90%;
-  }
+.material {
+  align-content: center;
+}
+.el-timeline-item {
+  font-weight: bold;
+  font-size: 30px；;
+}
+.block {
+  width: 90%;
+}
   .nav-menu {
     margin-bottom: 0px;
     }
