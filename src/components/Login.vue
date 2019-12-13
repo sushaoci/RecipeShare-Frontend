@@ -33,6 +33,8 @@
 </body>
 </template>
 <script>
+import global from '@/global/global'
+
 export default {
   data() {
     return {
@@ -57,7 +59,6 @@ export default {
         isValid = valid;
       });
       if (isValid) {
-        console.log("jinru")
         var _this = this;
         this.$axios
           .post("/login", {
@@ -67,10 +68,14 @@ export default {
           .then(resp => {
             if (resp.data.code === 200) {
               var data = resp.data.data;
+              global.id = data.id;
               _this.$store.commit("login", data);
               var path = _this.$route.query.redirect;
               _this.$router.replace({
-                path: path === "/" || path === undefined ? "/home" : path
+                path: path === "/" || path === undefined ? "/index" : path,
+                query:{
+                  info:data,
+                }
               });
             }
           })
