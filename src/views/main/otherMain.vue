@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      avatar:"",
+      avatar:global.avatar,
       name:"",
       likes: [],
       created: [],
@@ -58,7 +58,7 @@ export default {
       //     this.isfollow = res.
       //   });
 
-      this.avatar = recipes.avatar;
+
       this.name = recipes.name;
       this.likes = recipes.recipes;
       this.created = recipes.recipes;

@@ -57,19 +57,21 @@ export default {
       recipes: [],
       tags: [],
       recipeShow: [],
-      profile: [],
+      profile: {
+        avatar: "",
+        name: "",
+        likes: "",
+        creates: "",
+        follow: "",
+        fan: ""
+      },
       rankList: []
     };
   },
   methods: {
     getData() {
       this.tags = tags.tags;
-      // axios.get(global.url + "/recipelist").then(res => {
-      //   this.recipes = res.data;
-      //   // this.tags = res.
-      //   // this.profile = res.
-      //   // this.rankList = res.
-      // });
+
       axios.get(global.url + "/recipelist").then(res => {
         this.recipes = res.data;
         this.recipeShow = res.data;
@@ -85,25 +87,30 @@ export default {
       });
 
       let formData = new FormData();
-      formData.append("userId",global.id);
+      formData.append("userId", global.id);
 
-      axios.post(global.url + "/getUserInfoById",formData).then(res => {
+      axios.post(global.url + "/getUserInfoById", formData).then(res => {
         // likes: Number,
-        // creates: Number,
-        this.profile.avatar = res.data.image;
-        this.profile.name = res.data.username;
-        this.profile.follow = res.data.following_num;
-        this.profile.fan = res.data.followed_num;
+        // creates: Number
+
+        this.profile.avatar = global.avatar;
+        this.profile.name = res.data.data.username;
+        this.profile.follow = res.data.data.following_num;
+        this.profile.fan = res.data.data.followed_num;
       });
     },
     filter(vals) {
       this.recipeShow = [];
       let tag = vals[0];
-      this.recipes.forEach(i => {
-        if (i.recipeTag.includes(tag)) {
-          this.recipeShow.push(i);
-        }
-      });
+      if (tag == "全部") {
+        this.recipeShow = this.recipes;
+      } else {
+        this.recipes.forEach(i => {
+          if (i.recipeTag.includes(tag)) {
+            this.recipeShow.push(i);
+          }
+        });
+      }
     }
   },
   mounted() {

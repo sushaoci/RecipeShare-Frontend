@@ -13,24 +13,27 @@
       </el-col>
     </el-row>
     <div v-for="i in comments">
-      <Comment :avatar="i.avatar" :name="i.name" :time="i.time" :content="i.content" />
+      <Comment :avatar="avatar" :name="i.userName" :time="i.commentTime" :content="i.commentContent" />
     </div>
   </div>
 </template>
 
 <script>
 import Comment from "./comment";
+import global from '@/global/global'
+
 export default {
   components: {
     Comment
   },
   props: {
-    avatar: String,
+    // avatar: String,
     comments: Array
   },
   data() {
     return {
-      input: ""
+      input: "",
+      avatar:global.avatar
     };
   },
   computed: {

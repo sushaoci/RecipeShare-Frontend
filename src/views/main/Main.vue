@@ -8,18 +8,24 @@
       <div class="likes">
         <h1>我的收藏</h1>
         <div v-for="recipe in likes">
-          <RecipeCard :url="recipe.url" :title="recipe.title" :author="recipe.author" />
+          <RecipeCard
+            :url="recipe.recipeImage"
+            :title="recipe.recipeName"
+            :author="recipe.recipeUsername"
+            :thumb="recipe.likeNum"
+            :id="recipe.recipeId"
+          />
         </div>
       </div>
       <div class="created">
         <h1>我的发布</h1>
         <div v-for="recipe in created">
           <RecipeCard
-            :url="recipe.url"
-            :title="recipe.title"
-            :author="recipe.author"
-            :thumb="recipe.thumb"
-            :id="recipe.id"
+            :url="recipe.recipeImage"
+            :title="recipe.recipeName"
+            :author="recipe.recipeUsername"
+            :thumb="recipe.likeNum"
+            :id="recipe.recipeId"
           />
         </div>
       </div>
@@ -46,12 +52,18 @@ export default {
   },
   methods: {
     getData() {
-      // axios.get(global.url + "").then(res => {
-      //   this.likes = res.
-      //   this.created = res.
-      // });
-      this.likes = recipes.recipes;
-      this.created = recipes.recipes;
+
+      // console.log(window.localStorage.getItem("user"))
+
+      let formData = new FormData();
+      formData.append("userId", global.id);
+
+      axios.post(global.url + "/getRecipeByUserId", formData).then(res => {
+        this.created = res.data;
+      });
+      axios.post(global.url + "/getUserCollection", formData).then(res => {
+        this.likes = res.data;
+      });
     }
   },
   mounted() {

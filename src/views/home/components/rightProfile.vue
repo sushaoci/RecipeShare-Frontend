@@ -5,8 +5,6 @@
       <h1>{{profile.name}}</h1>
     </div>
     <p class="hi">
-      {{profile.likes}} 喜欢 </br>
-      {{profile.creates}} 创建</br>
       {{profile.follow}} 关注</br>
       {{profile.fan}} 粉丝</br>
     </p>
@@ -21,8 +19,6 @@ export default {
     profile: {
       avatar: String,
       name: String,
-      likes: Number,
-      creates: Number,
       follow:Number,
       fan:Number,
     }
