@@ -19,6 +19,7 @@
       <i class="el-icon-switch-button" v-on:click="logout"></i>
       <span class="title-name">Healthy Recipe</span>
 
+
       <el-input
         style="width: 300px;float: left;margin-top: 14px;"
         placeholder="快速搜索..."

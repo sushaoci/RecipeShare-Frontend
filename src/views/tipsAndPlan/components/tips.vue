@@ -1,8 +1,15 @@
 <template>
   <div class="block">
-    <div v-for="(i,index) in tips">
-        <p> tip{{index}}:{{i}} </p>
+      <el-card class="box-card">
+           <div slot="header" class="clearfix">
+            
+           <h3> <i class="el-icon-tickets"></i>      Tips</h3>
+            </div>
+    
+    <div v-for="(i,index) in tips"  class="text item">
+         tip{{index}}:{{i}} 
     </div>
+     </el-card>
   </div>
 </template>
 
@@ -16,4 +23,24 @@ export default {
 </script>
 
 <style>
+.text {
+    font-size: 14px;
+  }
+
+  .item {
+    padding: 15px 0;
+  }
+  h3{
+  margin-block-end: 0em;
+   margin-block-start: 0em;
+}
+
+.box-card{
+  background: #F9D349;
+  text:#000;
+  text-align:left ;
+  border-radius: 20px;
+  margin: 20px;
+  position:fixed;
+}
 </style>

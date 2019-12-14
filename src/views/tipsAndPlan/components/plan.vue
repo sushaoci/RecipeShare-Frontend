@@ -11,6 +11,8 @@
             :id="recipe.id"
           />
         </el-timeline-item>
+         <el-timeline-item >
+        </el-timeline-item>
       </div>
     </el-timeline>
   </div>
