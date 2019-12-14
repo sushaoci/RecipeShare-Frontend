@@ -4,7 +4,7 @@
         <div class="content">
       <el-col :span="10">
       
-        <p>{{content}}斤不需要这么多）</p>
+        <p>{{content}}</p>
        
       </el-col>
        </div>

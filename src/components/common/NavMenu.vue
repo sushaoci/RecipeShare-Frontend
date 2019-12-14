@@ -15,11 +15,13 @@
 
       </el-menu-item> -->
       
-      <i class="el-icon-food" ></i>
+      <i class="el-icon-food"></i>
       <i class="el-icon-switch-button" v-on:click="logout"></i>
       <span class="title-name">Healthy Recipe</span>
-      
-      <el-input style="width: 300px;float: left;margin-top: 12px;"
+
+
+      <el-input
+        style="width: 300px;float: left;margin-top: 14px;"
         placeholder="快速搜索..."
         prefix-icon="el-icon-search"
         size="medium"
@@ -49,14 +51,7 @@ export default {
     }
   },
   methods: {
-    back() {
-      this.$router.push({
-        path: "/index"
-      });
-    },
-
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
     },
 
     logout() {
@@ -93,8 +88,7 @@ padding: 10px
 
 .title-name{
   padding-top: 12px;
-  padding-right: 15px;
-
+  padding-right: 12px;
   color:#000;
   float: left;
   font-size: 32px;
