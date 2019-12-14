@@ -24,6 +24,11 @@
                 </el-select>
               </div>
             </el-timeline-item>
+            <el-timeline-item timestamp="tag" placement="top">
+              <div class="cover">
+                <ImgUpload ref="img" />
+              </div>
+            </el-timeline-item>
             <el-timeline-item timestamp="用料" placement="top">
               <div class="material">
                 <el-card class="box-card2">
@@ -56,6 +61,7 @@ import ImgUpload from "./components/ImgUpload";
 import StepList from "./components/StepList";
 
 import global from "@/global/global";
+import axios from "axios";
 
 export default {
   components: {
@@ -100,16 +106,35 @@ export default {
   },
   methods: {
     submit() {
-      let recipe = {};
-      recipe.recipeName = this.name;
-      recipe.recipeTag = this.tag;
-      recipe.recipeImage = this.$refs.cover.getAll();
-      recipe.recipeMaterial = this.$refs.material.getAll();
-      recipe.recipeStep = this.$refs.steps.getAll();
+      let temp = this.$refs.steps.getAll();
+      let a = [],
+        b = [];
+      temp.map(i => {
+        a.push(i.content);
+        b.push(i.img);
+      });
 
       let formData = new FormData();
-      formData.append("recipe", recipe);
-      axios.post(global.url + "/recipe/release",formData).then();
+      formData.append("recipeName", this.name);
+      formData.append("recipeDesc", "");
+      formData.append("recipeTag", this.tag);
+      formData.append("userId", global.id);
+      formData.append("size", "0");
+      formData.append("pic", this.$refs.img.getAll());
+
+      formData.append("picList", b);
+      formData.append("recipeContentList", a);
+      formData.append("recipeMaterials", this.$refs.material.getAll());
+      formData.append("userId", global.id);
+
+      axios
+        .post(global.url + "/release", formData, {
+          dataType: "json",
+          contentType: "application/json"
+        })
+        .then(res => {
+          console.log(res);
+        });
 
       this.$router.push({ path: "/home" });
     }

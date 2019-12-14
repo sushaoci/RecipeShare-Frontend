@@ -1,14 +1,14 @@
 <template>
   <div class="block">
     <el-timeline>
-      <div v-for="recipe in plans">
-        <el-timeline-item :timestamp="recipe.time" placement="top">
+      <div v-for="plan in plans">
+        <el-timeline-item :timestamp="plan.dailyPlan.dpdate" placement="top">
           <RecipeCard
-            :url="recipe.url"
-            :title="recipe.title"
-            :author="recipe.author"
-            :thumb="recipe.thumb"
-            :id="recipe.id"
+            :url="plan.recipe.recipeImage"
+            :title="plan.recipe.recipeName"
+            :author="plan.recipe.recipeUsername"
+            :thumb="plan.recipe.likeNum"
+            :id="plan.recipe.recipeId"
           />
         </el-timeline-item>
          <el-timeline-item >

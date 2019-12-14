@@ -1,4 +1,18 @@
 <template>
+<el-container>
+  <el-header>
+    <div class="search">
+      <el-input
+        style="width: 300px;float: left;margin-top: 14px;"
+        placeholder="快速搜索..."
+        size="medium"
+        v-model="keywords"
+      ></el-input>
+      <el-button class="searcher" type="primary" icon="el-icon-search"@click="cha">
+        搜索
+      </el-button>
+    </div>
+  </el-header>
   <el-container>
     <el-aside width="200px">
       <div class="filter">
@@ -29,6 +43,7 @@
       </el-aside>
     </el-container>
   </el-container>
+</el-container>
 </template>
 
 <script>
@@ -65,10 +80,19 @@ export default {
         follow: "",
         fan: ""
       },
-      rankList: []
+      rankList: [],
+      keywords: ""
     };
   },
   methods: {
+    cha() {
+      let formData = new FormData();
+      formData.append("recipeName", this.keywords);
+
+      axios.post(global.url + "/getRecipeByName",formData).then(res => {
+        this.recipeShow = res.data;
+      });
+    },
     getData() {
       this.tags = tags.tags;
 
@@ -130,6 +154,10 @@ export default {
   justify-self: center;
   align-self: center;
 }
+.search{
+  display:flex;
+  flex-flow:row
+}
 /* .recipe {
   background-color: black;
   grid-column: 2/3;
@@ -150,4 +178,10 @@ export default {
   justify-self: center;
   align-self: start;
 }  */
+.searcher{
+  margin: 10px;
+  margin-top:13px;
+  margin-bottom:13px;
+  
+}
 </style>

@@ -34,6 +34,9 @@ import Tips from "./components/tips";
 import Plan from "./components/plan";
 
 import tandp from "@/data/tipsAndPlan.json";
+import global from '@/global/global'
+import axios from 'axios'
+
 
 export default {
   components: {
@@ -56,13 +59,14 @@ export default {
       let formData = new FormData();
       formData.append("userId", global.id);
 
-      // axios.post(global.url + "/mydailyplan",formData).then(res => {
-      //   this.plans = res.data;
-      // });
+      axios.post(global.url + "/mydailyplan",formData).then(res => {
+        this.plans = res.data;
+        console.log(this.plans)
+      });
       
-      this.tips = tandp.tips;
-      this.plans = tandp.plans;
-      this.energy = tandp.energy;
+      // this.tips = tandp.tips;
+      // this.plans = tandp.plans;
+      // this.energy = tandp.energy;
     }
   },
   mounted() {
