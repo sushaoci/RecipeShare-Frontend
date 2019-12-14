@@ -7,10 +7,13 @@
         <div>
           <img :src="cover" alt="cover" />
           <el-row>
-            <el-col :span="12">
+            <el-col :span="8">
               <el-button @click="plan">加入今日计划</el-button>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="8">
+              <el-button @click="xihuan">喜欢</el-button>
+            </el-col>
+            <el-col :span="8">
               <el-button @click="like">收藏</el-button>
             </el-col>
           </el-row>
@@ -132,7 +135,14 @@ export default {
       formData.append("userId", global.id);
       formData.append("recipeId", this.recipeid);
       axios.post(global.url + "/collect", formData).then(res=>{
-
+      });
+    },
+    xihuan() {
+      let formData = new FormData();
+      formData.append("userId", global.id);
+      formData.append("recipeId", this.recipeid);
+      axios.post(global.url + "/like", formData).then(res=>{
+        console.log(res)
       });
     },
     into() {
