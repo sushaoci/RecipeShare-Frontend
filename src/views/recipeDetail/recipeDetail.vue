@@ -120,10 +120,12 @@ export default {
       });
     },
     plan() {
-      // let formData = new FormData();
-      // formData.append("id", global.id);
-      // formData.append("recipeid", this.recipeid);
-      // axios.post(global.url + "", formData).then();
+      let formData = new FormData();
+      formData.append("userId", global.id);
+      formData.append("recipeId", this.recipeid);
+      axios.post(global.url + "/addDP", formData).then(res=>{
+        console.log(res)
+      });
     },
     like() {
       let formData = new FormData();
