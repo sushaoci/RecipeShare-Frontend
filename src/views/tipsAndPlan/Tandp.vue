@@ -36,10 +36,11 @@ export default {
       //   console.log(tab, event);
     },
     getData() {
-      // axios.get(global.url + "").then(res => {
-      //   this.tips = res.
-      //   this.plans = res.
-      //   this.energy = res.
+      let formData = new FormData();
+      formData.append("userId", global.id);
+
+      // axios.post(global.url + "/mydailyplan",formData).then(res => {
+      //   this.plans = res.data;
       // });
       
       this.tips = tandp.tips;
