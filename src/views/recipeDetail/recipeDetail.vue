@@ -97,6 +97,7 @@ export default {
       });
       axios.post(global.url + "/getRecipeComment", formData).then(res => {
         this.comments = res.data;
+        console.log(this.comments)
       });
 
       // this.cover = comments.cover;

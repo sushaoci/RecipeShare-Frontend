@@ -13,7 +13,7 @@
       </el-col>
     </el-row>
     <div v-for="i in comments">
-      <Comment :avatar="avatar" :name="i.userName" :time="i.commentTime" :content="i.commentContent" />
+      <Comment :avatar="avatar" :name="i.userName" :time="i.commentTime" :content="i.content" />
     </div>
   </div>
 </template>
