@@ -6,7 +6,29 @@
       <p>用户名</p>
  </div>
  <el-container>
-     <el-aside width="150px"></el-aside>
+     <el-aside width="250px">
+        <el-table
+    :data="tableData"
+    style="width: 100%"
+    height="250"
+    max-height="250">
+    
+    <el-table-column
+      prop="name"
+      label="关注列表"
+      width="120">
+    </el-table-column>
+     <el-table-column
+      fixed="right"
+      label="操作"
+      width="100">
+      <template slot-scope="scope">
+        <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+        <el-button type="text" size="small">移除</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+     </el-aside>
     <el-main>
        
 
@@ -55,11 +77,17 @@ export default {
   },
   data() {
     return {
+      tableData: [{
+          name: 200333
+        }],
       likes: [],
       created: []
     };
   },
   methods: {
+      handleClick(row) {
+        console.log(row);
+      },
     getData() {
 
       // console.log(window.localStorage.getItem("user"))
