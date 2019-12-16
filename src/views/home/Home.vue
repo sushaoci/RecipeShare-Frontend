@@ -3,12 +3,13 @@
   <el-header>
     <div class="search">
       <el-input
-        style="width: 300px;float: left;margin-top: 14px;"
+        style="width: 300px;float: left;margin-top: 10px;margin-left:-20px"
         placeholder="快速搜索..."
         size="medium"
         v-model="keywords"
+        class="input"
       ></el-input>
-      <el-button class="searcher" type="primary" icon="el-icon-search"@click="cha">
+      <el-button class="searcher" type="primary" icon="el-icon-search"  @click="cha">
         搜索
       </el-button>
     </div>
@@ -179,9 +180,22 @@ export default {
   align-self: start;
 }  */
 .searcher{
-  margin: 10px;
-  margin-top:13px;
-  margin-bottom:13px;
-  
+margin-top: 10px;
+    margin-bottom: 13px;
+    border-radius: 0px;
+    padding: 10px;
+    font-size: 14px;
+
+}
+.el-input__inner{
+  border-radius: 0px;
+
+}
+.input{
+  border-radius: 0px;
+
+}
+.nav-menu {
+    margin-bottom: 0px;
 }
 </style>

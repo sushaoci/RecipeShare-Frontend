@@ -97,6 +97,7 @@ export default {
       });
       axios.post(global.url + "/getRecipeComment", formData).then(res => {
         this.comments = res.data;
+        console.log(this.comments)
       });
       axios.post(global.url + "/steplist", formData).then(res => {
         this.steps = res.data;

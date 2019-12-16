@@ -121,7 +121,6 @@ export default {
         d.push(i.amount);
       })
 
-      console.log(b)
       let formData = new FormData();
       formData.append("recipeName", this.name);
       formData.append("recipeDesc", "");
@@ -129,7 +128,6 @@ export default {
       formData.append("userId", global.id);
       formData.append("size", "0");
       formData.append("pic", this.$refs.img.getAll());
-
       formData.append("materialName",c);
       formData.append("materialCount",d);
 

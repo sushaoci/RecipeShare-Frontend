@@ -14,19 +14,13 @@
         {{ item.navItem }}
 
       </el-menu-item> -->
+      <div @click="back">
+          <i class="el-icon-food"></i>
+      </div>
       
-      <i class="el-icon-food"></i>
       <i class="el-icon-switch-button" v-on:click="logout"></i>
-      <span class="title-name">Healthy Recipe</span>
+      <span class="title-name">Fit    Recipe</span>
 
-
-      <el-input
-        style="width: 300px;float: left;margin-top: 14px;"
-        placeholder="快速搜索..."
-        prefix-icon="el-icon-search"
-        size="medium"
-        v-model="keywords"
-      ></el-input>
     </el-menu>
   </div>
 </template>
@@ -51,6 +45,11 @@ export default {
     }
   },
   methods: {
+    back(){
+      this.$router.push({
+        path:"/index"
+      })
+    },
     handleSelect(key, keyPath) {
     },
 
@@ -83,16 +82,19 @@ a {
 font-size: 40px;
 color:#000;
 float: left;
-padding: 10px
+padding: 10px;
+padding-left:20px;
+cursor: pointer;
 }
 
 .title-name{
   padding-top: 12px;
-  padding-right: 12px;
+  padding-left: 15px;
   color:#000;
   float: left;
   font-size: 32px;
-  font-weight: bold
+  font-weight: bold;
+  word-spacing:6px
   }
   .el-icon-switch-button {
     cursor: pointer;

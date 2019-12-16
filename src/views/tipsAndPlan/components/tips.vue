@@ -1,13 +1,13 @@
 <template>
   <div class="block">
-      <el-card class="box-card">
+      <el-card class="box-card5">
            <div slot="header" class="clearfix">
-            
+
            <h3> <i class="el-icon-tickets"></i>      Tips</h3>
             </div>
-    
+
     <div v-for="(i,index) in tips"  class="text item">
-         tip{{index}}:{{i}} 
+         tip{{index+1}}:{{i}}
     </div>
      </el-card>
   </div>
@@ -35,12 +35,13 @@ export default {
    margin-block-start: 0em;
 }
 
-.box-card{
+.box-card5{
   background: #F9D349;
   text:#000;
   text-align:left ;
   border-radius: 20px;
   margin: 20px;
   position:fixed;
+  width:250px;
 }
 </style>
