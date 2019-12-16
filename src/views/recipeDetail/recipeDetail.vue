@@ -23,6 +23,7 @@
               </el-col>
               <el-col>
                 <span>{{name}}</span>
+                <span>{{size}}人食</span>
               </el-col>
             </el-row>
           </div>
@@ -63,6 +64,7 @@ export default {
   },
   data() {
     return {
+        size:"",
       cover: "",
       avatar: global.avatar,
       name: "",
@@ -87,6 +89,7 @@ export default {
         this.cover = res.data.recipeImage;
         this.name = res.data.recipeUsername;
         this.content = res.data.recipeName;
+        this.size=res.data.size;
 
         // this.steps = res.
 

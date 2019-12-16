@@ -24,9 +24,14 @@
                 </el-select>
               </div>
             </el-timeline-item>
-            <el-timeline-item timestamp="tag" placement="top">
+            <el-timeline-item timestamp="封面" placement="top">
               <div class="cover">
                 <ImgUpload ref="img" />
+              </div>
+            </el-timeline-item>
+            <el-timeline-item timestamp="人数" placement="top">
+              <div class="num">
+                <el-input v-model="num" placeholder="适用人数"></el-input>
               </div>
             </el-timeline-item>
             <el-timeline-item timestamp="用料" placement="top">
@@ -73,6 +78,7 @@ export default {
     return {
       name: "",
       tag: "",
+        num:"",
       options: [
         {
           value: "早餐"
@@ -128,7 +134,7 @@ export default {
       formData.append("recipeDesc", "");
       formData.append("recipeTag", this.tag);
       formData.append("userId", global.id);
-      formData.append("size", "0");
+      formData.append("size", this.num);
       formData.append("pic", this.$refs.img.getAll());
 
       formData.append("picList", b);
