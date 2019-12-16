@@ -14,8 +14,10 @@
         {{ item.navItem }}
 
       </el-menu-item> -->
+      <div @click="back">
+          <i class="el-icon-food"></i>
+      </div>
       
-      <i class="el-icon-food"></i>
       <i class="el-icon-switch-button" v-on:click="logout"></i>
       <span class="title-name">Fit    Recipe</span>
 
@@ -43,6 +45,11 @@ export default {
     }
   },
   methods: {
+    back(){
+      this.$router.push({
+        path:"/index"
+      })
+    },
     handleSelect(key, keyPath) {
     },
 
@@ -77,6 +84,7 @@ color:#000;
 float: left;
 padding: 10px;
 padding-left:20px;
+cursor: pointer;
 }
 
 .title-name{
