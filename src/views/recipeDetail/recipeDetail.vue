@@ -98,6 +98,10 @@ export default {
       axios.post(global.url + "/getRecipeComment", formData).then(res => {
         this.comments = res.data;
       });
+      axios.post(global.url + "/steplist", formData).then(res => {
+        this.steps = res.data;
+        console.log(res.data)
+      });
 
       // this.cover = comments.cover;
       // this.avatar = comments.avatar;

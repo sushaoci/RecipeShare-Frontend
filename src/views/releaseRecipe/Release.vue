@@ -114,6 +114,14 @@ export default {
         b.push(i.img);
       });
 
+      let all = this.$refs.material.getAll();
+      let c=[],d=[];
+      all.map(i=>{
+        c.push(i.name);
+        d.push(i.amount);
+      })
+
+      console.log(b)
       let formData = new FormData();
       formData.append("recipeName", this.name);
       formData.append("recipeDesc", "");
@@ -122,16 +130,29 @@ export default {
       formData.append("size", "0");
       formData.append("pic", this.$refs.img.getAll());
 
-      formData.append("picList", b);
-      formData.append("recipeContentList", a);
-      formData.append("recipeMaterials", this.$refs.material.getAll());
-      formData.append("userId", global.id);
+      formData.append("materialName",c);
+      formData.append("materialCount",d);
 
       axios
         .post(global.url + "/release", formData, {
-          dataType: "json",
-          contentType: "application/json"
+          contentType: false, //不设置内容类型
+          processData: false, //不处理数据
         })
+        .then(res => {
+          console.log(res);
+        });
+        
+      let formData2 = new FormData();
+      formData2.append("picList", b[0]);
+      formData2.append("stepDesc", a);
+      console.log(a)
+      console.log(b)
+
+      axios
+        .post(global.url + "/mupload", formData2, {
+          contentType: false,
+          processData: false, //不处理数据        
+          })
         .then(res => {
           console.log(res);
         });

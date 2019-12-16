@@ -3,7 +3,7 @@
       <div v-for="(i,index) in steps">
         <div class="step">
           <span class="step-index"> {{index}} </span>
-          <step :content="i.content" :img="i.img"/>
+          <step :content="i.stepDesc" :img="i.image"/>
         </div>
           <el-divider></el-divider>
       </div>

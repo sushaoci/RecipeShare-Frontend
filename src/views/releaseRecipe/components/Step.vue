@@ -8,7 +8,7 @@
         <el-input size="max" type="textarea" :rows="6" placeholder="请输入内容" v-model="content"></el-input>
       </el-col>
       <el-col :span="12">
-        <ImgUpload ref="img" />
+        <ImgUpload ref="img" enctype="multipart/form-data"/>
       </el-col>
     </el-row>
   </el-card>
