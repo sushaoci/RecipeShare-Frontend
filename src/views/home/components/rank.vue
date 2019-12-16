@@ -7,7 +7,7 @@
       <el-col :span="20">
         <el-row >
           <div class="row-tit">
-            <span class="title">{{title}}这里是标题</span>
+            <span class="title">{{title}}</span>
           </div>
         </el-row>
         <el-row>

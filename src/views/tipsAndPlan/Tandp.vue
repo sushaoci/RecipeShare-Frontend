@@ -147,6 +147,6 @@ h3 {
 }
   .dp{
     display:flex;
-    fiex-flow:row;
+    flex-flow:row;
   }
 </style>
