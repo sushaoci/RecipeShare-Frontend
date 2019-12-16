@@ -114,6 +114,15 @@ export default {
         b.push(i.img);
       });
 
+      console.log(temp)
+
+      let all = this.$refs.material.getAll();
+      let c=[],d=[];
+      all.map(i=>{
+        c.push(i.name);
+        d.push(i.amount);
+      })
+
       let formData = new FormData();
       formData.append("recipeName", this.name);
       formData.append("recipeDesc", "");
@@ -123,9 +132,9 @@ export default {
       formData.append("pic", this.$refs.img.getAll());
 
       formData.append("picList", b);
-      formData.append("recipeContentList", a);
-      formData.append("recipeMaterials", this.$refs.material.getAll());
-      formData.append("userId", global.id);
+      formData.append("stepDesc", a);
+      formData.append("materialName",c);
+      formData.append("materialCount",d);
 
       axios
         .post(global.url + "/release", formData, {

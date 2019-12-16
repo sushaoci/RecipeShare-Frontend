@@ -1,30 +1,31 @@
-<template>
+ <template>
   <div>
     <el-container>
-      <el-aside width=300px>
-       <Tips :tips="tips" />
+      <el-aside width="300px">
+        <Tips :tips="tips" />
+        <div class="b">
+          <el-date-picker
+            v-model="value1"
+            type="date"
+            placeholder="选择日期"
+            value-format="yyyy-MM-dd"
+            format="yyyy-MM-dd"
+            @change="click"
+          ></el-date-picker>
+        </div>
       </el-aside>
       <el-main class="plan">
-    <!-- <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="今日计划" name="first">
-        <p>根据您的今日计划，预计您今日将摄入{{this.energy}}卡路里</p>
+        <div class="dptitle">
+          <h3>今日计划</h3>
+          <p></p>
+          <span class="cal">根据您的今日计划，预计您今日将摄入</span>
+          <span class="col">{{this.energy}}</span>
+          <span class="cal">卡路里</span>
+        </div>
+        <el-divider></el-divider>
         <Plan :plans="plans" />
-      </el-tab-pane>
-      <el-tab-pane label="Tips" name="second">
-        <Tips :tips="tips" />
-      </el-tab-pane>
-    </el-tabs> -->
-    <div class="dptitle">
-    <h3>今日计划</h3>
-    <p></p>
-     <span class="cal">根据您的今日计划，预计您今日将摄入</span>
-     <span class="col">{{this.energy}}</span>
-     <span class="cal">卡路里</span>
-    </div>
-     <el-divider></el-divider>
-    <Plan :plans="plans" />
       </el-main>
-    <el-aside width=100px></el-aside>
+      <el-aside width="100px"></el-aside>
     </el-container>
   </div>
 </template>
@@ -34,17 +35,25 @@ import Tips from "./components/tips";
 import Plan from "./components/plan";
 
 import tandp from "@/data/tipsAndPlan.json";
-import global from '@/global/global'
-import axios from 'axios'
 
+import axios from "axios";
+import global from "@/global/global";
 
 export default {
   components: {
     Tips,
     Plan
   },
+
   data() {
     return {
+      pickerOptions: {
+        disabledDate(time) {
+          return time.getTime() > Date.now();
+        }
+      },
+      value1: "",
+      value2: "",
       activeName: "first",
       tips: [],
       plans: [],
@@ -56,17 +65,24 @@ export default {
       //   console.log(tab, event);
     },
     getData() {
-      let formData = new FormData();
-      formData.append("userId", global.id);
+      // axios.get(global.url + "").then(res => {
+      //   this.tips = res.
+      //   this.plans = res.
+      //   this.energy = res.
+      // });
 
-      axios.post(global.url + "/mydailyplan",formData).then(res => {
-        this.plans = res.data;
-        console.log(this.plans)
-      });
-      
-      // this.tips = tandp.tips;
-      // this.plans = tandp.plans;
-      // this.energy = tandp.energy;
+      this.tips = tandp.tips;
+      this.plans = tandp.plans;
+      this.energy = tandp.energy;
+    },
+    click(t) {
+      console.log(t); //结果为一个数组，如：["2018-08-04", "2018-08-06"]
+      // let formData = new FormData();
+      // formData.append("",t);
+      // formData.append('',global.id);
+      // axios.post(global.url+"",formData).then(res=>{
+      //   let data = res.data;
+      // })
     }
   },
   mounted() {
@@ -77,27 +93,36 @@ export default {
 
 <style>
 .nav-menu {
-    margin-bottom: 10px;
-    }
-    
-.dptitle{
-  margin:13px;
-  margin-bottom:13px
+  margin-bottom: 10px;
 }
-.plan{
-  text-align: left
+
+.dptitle {
+  margin: 13px;
+  margin-bottom: 13px;
 }
-.cal{
-  color:#909399;
-  font-size:15px;
+.plan {
+  text-align: left;
 }
-.col{
-  color:#F9D349;
-  font-size:15px;
-  font-weight:bolder;
+.cal {
+  color: #909399;
+  font-size: 15px;
 }
-  h3{
+.col {
+  color: #f9d349;
+  font-size: 15px;
+  font-weight: bolder;
+}
+h3 {
   margin-block-end: 1em;
-   margin-block-start: 3em;
+  margin-block-start: 3em;
+}
+.is-selected {
+  color: #f9d349;
+}
+.b{
+  position:fixed;
+  margin: 22px;
+  padding-top:21%;
+  width: 50px;
 }
 </style>
