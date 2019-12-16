@@ -3,24 +3,26 @@
     <el-container>
       <el-aside width="300px">
         <Tips :tips="tips" />
-        <div class="b">
-          <el-date-picker
-            v-model="value1"
-            type="date"
-            placeholder="选择日期"
-            value-format="yyyy-MM-dd"
-            format="yyyy-MM-dd"
-            @change="click"
-          ></el-date-picker>
-        </div>
       </el-aside>
       <el-main class="plan">
+        <div class="dp">
         <div class="dptitle">
           <h3>今日计划</h3>
           <p></p>
           <span class="cal">根据您的今日计划，预计您今日将摄入</span>
           <span class="col">{{this.energy}}</span>
           <span class="cal">卡路里</span>
+        </div>
+          <div class="b">
+            <el-date-picker
+              v-model="value1"
+              type="date"
+              placeholder="选择日期"
+              value-format="yyyy-MM-dd"
+              format="yyyy-MM-dd"
+              @change="click"
+            ></el-date-picker>
+          </div>
         </div>
         <el-divider></el-divider>
         <Plan :plans="plans" />
@@ -65,24 +67,42 @@ export default {
       //   console.log(tab, event);
     },
     getData() {
-      // axios.get(global.url + "").then(res => {
-      //   this.tips = res.
-      //   this.plans = res.
-      //   this.energy = res.
-      // });
+      let formData = new FormData();
+      formData.append("userId", global.id);
 
-      this.tips = tandp.tips;
-      this.plans = tandp.plans;
-      this.energy = tandp.energy;
+      axios.post(global.url + "/mydailyplan",formData).then(res => {
+          console.log(res.data)
+        this.plans = res.data
+
+          let count=0;
+          this.plans.map(i=>{
+              count+=i.recipe.calorie;
+          })
+          // console.log(count)
+          this.energy=count;
+      });
+
+      axios.get(global.url + "/tips").then(res => {
+          console.log(res.data)
+          this.tips = res.data
+      });
+
     },
     click(t) {
       console.log(t); //结果为一个数组，如：["2018-08-04", "2018-08-06"]
-      // let formData = new FormData();
-      // formData.append("",t);
-      // formData.append('',global.id);
-      // axios.post(global.url+"",formData).then(res=>{
-      //   let data = res.data;
-      // })
+
+      let formData = new FormData();
+      formData.append("date",t);
+      formData.append('userId',global.id);
+      axios.post(global.url+"/todayplan",formData).then(res=>{
+        this.plans = res.data;
+          let count=0;
+          this.plans.map(i=>{
+              count+=i.recipe.calorie;
+          })
+          // console.log(count)
+          this.energy=count;
+      })
     }
   },
   mounted() {
@@ -120,9 +140,13 @@ h3 {
   color: #f9d349;
 }
 .b{
-  position:fixed;
-  margin: 22px;
-  padding-top:21%;
+  position: absolute;
+  padding-left:350px;
+  padding-top:3px;
   width: 50px;
 }
+  .dp{
+    display:flex;
+    fiex-flow:row;
+  }
 </style>

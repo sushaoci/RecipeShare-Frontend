@@ -3,12 +3,12 @@
     <div class="head">
       <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
       <p></p>
-      <p>用户名</p>
+      <p>{{name}}</p>
     </div>
     <el-container>
       <el-aside width="250px">
         <el-table :data="tableData" style="width: 100%" height="250" max-height="250">
-          <el-table-column prop="userName" label="关注列表" width="120"></el-table-column>
+          <el-table-column prop="username" label="关注列表" width="120"></el-table-column>
           <el-table-column fixed="right" label="操作" width="100">
             <template slot-scope="scope">
               <el-button @click="see(scope.row)" type="text" size="small">查看</el-button>
@@ -61,7 +61,8 @@ export default {
   },
   data() {
     return {
-      tableData: [{ userId: 1, userName: "Fdsgsd" }],
+      name: "",
+      tableData: [],
       likes: [],
       created: []
     };
@@ -78,7 +79,7 @@ export default {
       formData.append("userId", global.id);
       formData.append("followingUserId", row.userId);
 
-      axios.post(global.url + "/", formData).then(res => {
+      axios.post(global.url + "/unfollow", formData).then(res => {
         console.log(res)
       });
     },
@@ -92,19 +93,18 @@ export default {
         this.created = res.data;
       });
 
-      let formData1 = new FormData();
-      formData1.append("userId", global.id);
-
-      axios.post(global.url + "/getUserCollection", formData1).then(res => {
+      axios.post(global.url + "/getUserCollection", formData).then(res => {
+        console.log(res.data)
         this.likes = res.data;
       });
 
-      let formData2 = new FormData();
-      formData2.append("userId", global.id);
-
-      axios.post(global.url + "/", formData2).then(res => {
+      axios.post(global.url + "/followinglist", formData).then(res => {
         this.tableData = res.data;
       });
+        axios.post(global.url + "/getUserInfoById", formData).then(res => {
+            console.log(res)
+            this.name = res.data.data.username;
+        });
     }
   },
   mounted() {

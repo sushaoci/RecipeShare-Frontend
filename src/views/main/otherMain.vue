@@ -3,7 +3,7 @@
        <div class="head">
       <el-avatar :src="avatar"> </el-avatar>
       <p></p>
-      <p> {{name}} 你的名字</p>
+      <p> {{name}}</p>
        <p></p>
       <el-button @click="follow" :disabled="isfollow">{{status}}</el-button>
       </div>
@@ -11,16 +11,16 @@
    <el-aside width="150px"></el-aside>
 
     <el-main>
-      
+
       <div class="created">
         <h3>ta的发布</h3>
         <div v-for="recipe in created">
           <RecipeCard
-            :url="recipe.url"
-            :title="recipe.title"
-            :author="recipe.author"
-            :thumb="recipe.thumb"
-            :id="recipe.id"
+            :url="recipe.recipeImage"
+            :title="recipe.recipeName"
+            :author="recipe.recipeUsername"
+            :thumb="recipe.likeNum"
+            :id="recipe.recipeId"
           />
         </div>
       </div>
@@ -29,7 +29,7 @@
   </el-container>
     </div>
 
- 
+
 </template>
 
 <script>
@@ -58,14 +58,20 @@ export default {
     getData() {
       this.id = this.$route.query.id;
 
-      //   let formData = new FormData();
-      //   formData.append("id", this.id);
+        let formData = new FormData();
+        formData.append("userId", this.id);
+        console.log(this.id)
 
-      //   axios.post(global.url + "", formData).then(res => {
-      //     this.likes = res.
-      //     this.created = res.
-      //     this.isfollow = res.
-      //   });
+
+        axios.post(global.url + "/getRecipeByUserId", formData).then(res => {
+            console.log(res)
+          this.created = res.data;
+        });
+
+        axios.post(global.url + "/getUserInfoById", formData).then(res => {
+            this.name = res.data.data.username;
+            console.log(res)
+        });
 
 
       this.name = recipes.name;
@@ -78,15 +84,17 @@ export default {
       } else {
         this.status = "已关注";
       }
+
     },
     follow() {
-        // let formData = new FormData();
-        // formData.append("id", global.id);
-        // formData.append("author", this.id);
+        let formData = new FormData();
+        formData.append("userId", global.id);
+        formData.append("followingUserId", this.id);
 
-        // axios.post(global.url + "", formData).then(res => {
-        //     this.getData();
-        // });
+        axios.post(global.url + "/follow", formData).then(res => {
+            // this.getData();
+            console.log(res)
+        });
     }
   },
   mounted() {
