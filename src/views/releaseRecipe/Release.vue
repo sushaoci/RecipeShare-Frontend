@@ -114,8 +114,6 @@ export default {
         b.push(i.img);
       });
 
-      console.log(temp)
-
       let all = this.$refs.material.getAll();
       let c=[],d=[];
       all.map(i=>{
@@ -130,17 +128,29 @@ export default {
       formData.append("userId", global.id);
       formData.append("size", "0");
       formData.append("pic", this.$refs.img.getAll());
-
-      formData.append("picList", b);
-      formData.append("stepDesc", a);
       formData.append("materialName",c);
       formData.append("materialCount",d);
 
       axios
         .post(global.url + "/release", formData, {
-          dataType: "json",
-          contentType: "application/json"
+          contentType: false, //不设置内容类型
+          processData: false, //不处理数据
         })
+        .then(res => {
+          console.log(res);
+        });
+        
+      let formData2 = new FormData();
+      formData2.append("picList", b[0]);
+      formData2.append("stepDesc", a);
+      console.log(a)
+      console.log(b)
+
+      axios
+        .post(global.url + "/mupload", formData2, {
+          contentType: false,
+          processData: false, //不处理数据        
+          })
         .then(res => {
           console.log(res);
         });

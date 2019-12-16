@@ -99,6 +99,10 @@ export default {
         this.comments = res.data;
         console.log(this.comments)
       });
+      axios.post(global.url + "/steplist", formData).then(res => {
+        this.steps = res.data;
+        console.log(res.data)
+      });
 
       // this.cover = comments.cover;
       // this.avatar = comments.avatar;
