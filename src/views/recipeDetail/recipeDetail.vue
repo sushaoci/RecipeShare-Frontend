@@ -4,7 +4,7 @@
     <el-container>
       <el-main>
         <div>
-          <img :src="cover" alt="cover" />
+          <img :src="cover" alt="cover" class="cover"/>
           <el-row>
             <el-col :span="8">
               <el-button @click="plan">加入今日计划</el-button>
@@ -173,4 +173,5 @@ export default {
 </script>
 
 <style>
+
 </style>

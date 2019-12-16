@@ -1,7 +1,9 @@
 <template>
   <div @click="onclick">
     <el-card :body-style="{ padding: '0px' }">
+      <div class="coverimage">
       <img :src="url" class="image" />
+        </div>
       <div style="padding: 14px;">
         <span>{{title}}</span>
         <div class="bottom clearfix">
@@ -52,10 +54,7 @@ export default {
   float: right;
 }
 
-.image {
-  width: 100%;
-  display: block;
-}
+
 
 .clearfix:before,
 .clearfix:after {
